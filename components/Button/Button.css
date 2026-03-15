@@ -1,0 +1,121 @@
+/**
+ * Button Component Styles
+ * Uses design tokens from the design system
+ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding: 12px 15px;
+  border-radius: var(--rounding-2-5x, 10px);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  min-width: 0;
+  width: auto;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+}
+
+/* Primary Type */
+.button--type-primary {
+  background-color: var(--color-bg-brand, #835de1);
+  color: var(--color-primitive-default-fixed, #ffffff);
+}
+
+.button--type-primary:not(:disabled):hover,
+.button--type-primary.button--state-hovered {
+  background-color: var(--color-state-bg-brand-active, #9b7ef1);
+}
+
+.button--type-primary.button--state-disabled {
+  background-color: var(--color-container-transparent-1, rgba(25, 25, 25, 0.05));
+  color: var(--color-primitive-neutral-4, #949494);
+}
+
+/* Secondary Type */
+.button--type-secondary {
+  background-color: var(--color-container-transparent-1, rgba(25, 25, 25, 0.05));
+  color: var(--color-primitive-primary, #191919);
+}
+
+.button--type-secondary:not(:disabled):hover,
+.button--type-secondary.button--state-hovered {
+  background-color: var(--color-state-container-transparent-1-active, rgba(25, 25, 25, 0.1));
+}
+
+.button--type-secondary.button--state-disabled {
+  background-color: var(--color-container-transparent-1, rgba(25, 25, 25, 0.05));
+  color: var(--color-primitive-neutral-4, #949494);
+}
+
+/* Transparent Type */
+.button--type-transparent {
+  background-color: transparent;
+  color: var(--color-primitive-brand, #835de1);
+}
+
+.button--type-transparent:not(:disabled):hover,
+.button--type-transparent.button--state-hovered {
+  background-color: var(--color-container-transparent-1, rgba(25, 25, 25, 0.05));
+}
+
+.button--type-transparent.button--state-disabled {
+  background-color: var(--color-container-transparent-1, rgba(25, 25, 25, 0.05));
+  color: var(--color-primitive-neutral-4, #949494);
+}
+
+/* White Type */
+.button--type-white {
+  background-color: var(--color-bg-default-fixed, #ffffff);
+  color: var(--color-primitive-brand, #835de1);
+}
+
+.button--type-white:not(:disabled):hover,
+.button--type-white.button--state-hovered {
+  background-color: var(--color-state-bg-default-fixed-active, rgba(255, 255, 255, 0.9));
+}
+
+.button--type-white.button--state-disabled {
+  background-color: var(--color-container-transparent-1-on-inverse-fixed, rgba(255, 255, 255, 0.1));
+  color: var(--color-primitive-neutral-4, #949494);
+}
+
+/* Label */
+.button__label {
+  white-space: nowrap;
+  text-align: center;
+  user-select: none;
+}
+
+/* Spinner */
+.button__spinner {
+  color: var(--spinner-color, var(--color-primitive-brand, #835de1));
+  animation: button-spin 1s linear infinite;
+}
+
+@keyframes button-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading state - ensure spinner is visible */
+.button--state-loading .button__label {
+  display: none;
+}
+
+/* Focus styles for accessibility */
+.button:focus-visible {
+  outline: 2px solid var(--color-primitive-brand, #835de1);
+  outline-offset: 2px;
+}
+

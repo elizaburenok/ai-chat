@@ -1,0 +1,113 @@
+/**
+ * Donut Chart Component
+ * Figma: Bank-02-UI-Kit node 11926-27601
+ * Uses design tokens from the design system
+ */
+
+.donut-chart {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-family: var(--font-family-primary);
+}
+
+.donut-chart--legend-below {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-m);
+}
+
+.donut-chart--legend-right {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-6x);
+}
+
+.donut-chart__chart {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.donut-chart__svg {
+  display: block;
+}
+
+.donut-chart__segment {
+  transition: stroke-dasharray 0.3s ease;
+}
+
+.donut-chart__ring {
+  stroke: var(--color-bg-neutral-2);
+}
+
+.donut-chart__ring--unfilled {
+  stroke: var(--color-bg-neutral-2);
+}
+
+.donut-chart__center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  pointer-events: none;
+}
+
+.donut-chart__center-value {
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-demi-bold);
+  line-height: var(--line-height-s);
+  color: var(--color-primitive-primary);
+}
+
+.donut-chart__center-label {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-s);
+  color: var(--color-primitive-secondary);
+}
+
+/* Legend (Bank Patterns design) */
+.donut-chart__legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2x);
+  min-width: 0;
+}
+
+.donut-chart__legend-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-2x);
+}
+
+.donut-chart__legend-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.donut-chart__legend-label {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-s);
+  color: var(--color-primitive-primary);
+}
+
+.donut-chart__legend-value {
+  flex-shrink: 0;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-s);
+  color: var(--color-primitive-secondary);
+}

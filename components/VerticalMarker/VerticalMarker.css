@@ -1,0 +1,199 @@
+/**
+ * Vertical Marker Component Styles
+ * Uses design tokens from the design system
+ */
+
+.vertical-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
+  padding-top: 7px;
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+  gap: 5px;
+  position: relative;
+  font-family: var(--font-family-primary);
+}
+
+/* Bars container */
+.vertical-marker__bars {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex: 1 1 0;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  justify-content: center;
+  align-content: stretch;
+}
+
+/* Bar wrapper */
+.vertical-marker__bar-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: flex-start;
+  flex-shrink: 0;
+  width: auto;
+}
+
+.vertical-marker__bar-wrapper--old {
+  /* Additional styling for "old" bar in 2-bar variant if needed */
+}
+
+/* Bar base styles */
+.vertical-marker__bar {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* Bar fill (solid) */
+.vertical-marker__bar-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: auto;
+  background-color: var(--color-bg-brand-2, #e2ddf6);
+  border-radius: var(--rounding-1-5x, 6px);
+  width: 100%;
+  /* Height is set via inline style from progressLevel */
+}
+
+/* Segmented bar */
+.vertical-marker__bar--segmented {
+  display: flex;
+  flex-direction: column;
+}
+
+.vertical-marker__bar-fill--segmented {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border-radius: var(--rounding-1-5x, 6px);
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.vertical-marker__segment {
+  flex: 1 1 0;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Saldo bar */
+.vertical-marker__bar--saldo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.vertical-marker__saldo-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.vertical-marker__bar-fill--saldo {
+  background-color: var(--color-bg-brand-2, #e2ddf6);
+  border-radius: var(--rounding-1-5x, 6px);
+  position: relative;
+  width: 100%;
+}
+
+.vertical-marker__bar-empty {
+  width: 100%;
+}
+
+/* Text label */
+.vertical-marker__text {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-xs, 12px);
+  line-height: var(--line-height-xs, 15px);
+  letter-spacing: var(--letter-spacing-xs, 0.12px);
+  font-weight: var(--font-weight-regular, 400);
+  color: var(--color-primitive-secondary, #676767);
+  text-align: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.vertical-marker__text--selected {
+  font-weight: var(--font-weight-medium, 500);
+  color: var(--color-primitive-primary, #191919);
+}
+
+/* Hover area */
+.vertical-marker__hover-area {
+  position: absolute;
+  inset: 7px 0 20px 0;
+  background-color: var(--color-container-transparent-1, rgba(25, 25, 25, 0.05));
+  pointer-events: none;
+}
+
+/* State: Inactive */
+.vertical-marker--state-inactive .vertical-marker__bar-wrapper {
+  opacity: 0.5;
+}
+
+.vertical-marker--state-inactive .vertical-marker__text {
+  color: var(--color-primitive-secondary, #676767);
+}
+
+/* Size variants - bar widths */
+.vertical-marker--size-15 .vertical-marker__bar {
+  width: 15px;
+  min-width: 15px;
+}
+
+.vertical-marker--size-20 .vertical-marker__bar {
+  width: 20px;
+  min-width: 20px;
+}
+
+.vertical-marker--size-25 .vertical-marker__bar {
+  width: 25px;
+  min-width: 25px;
+}
+
+.vertical-marker--size-44 .vertical-marker__bar {
+  width: 44px;
+  min-width: 44px;
+}
+
+/* Quantity: 2 Bars - gap adjustments */
+.vertical-marker--quantity-2-bars.vertical-marker--size-15 .vertical-marker__bars {
+  gap: 3px;
+}
+
+.vertical-marker--quantity-2-bars.vertical-marker--size-20 .vertical-marker__bars {
+  gap: 5px;
+}
+
+/* Container width adjustments for certain size/quantity combinations */
+.vertical-marker--size-25.vertical-marker--quantity-1-bar {
+  width: 40px;
+}
+
+.vertical-marker--size-44.vertical-marker--quantity-1-bar {
+  width: 44px;
+}
+
+.vertical-marker--size-44.vertical-marker--quantity-1-bar.vertical-marker--state-selected {
+  width: 44px;
+}
+

@@ -1,0 +1,349 @@
+/**
+ * DialogChat — scrollable chat feed + input (Figma node 348:10915)
+ * Tokens from tokens/css-variables.css
+ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  padding-top: var(--spacing-s);
+  height: 100%;
+  min-height: 0;
+}
+
+/* ---- Feed (scrollable) ---- */
+.feed {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.feedInner {
+  width: 100%;
+  max-width: var(--chat-feed-max-width);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+}
+
+.onboardingPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2x);
+  width: 100%;
+  opacity: 1;
+}
+
+.onboardingPanelEnter {
+  opacity: 1;
+}
+
+.onboardingBubbleBase {
+  transform-origin: top left;
+}
+
+.onboardingBubblePreEnter {
+  opacity: 0;
+  transform: translateY(var(--spacing-1x));
+}
+
+.onboardingBubbleEnter {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 800ms cubic-bezier(0.22, 1, 0.36, 1) 320ms,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1) 420ms;
+}
+
+.onboardingPanelExit {
+  opacity: 0;
+}
+
+.onboardingActions {
+  display: flex;
+  align-items: flex-start;
+  padding-top: var(--spacing-1x);
+  opacity: 0;
+  transform: translateY(var(--spacing-1x));
+}
+
+.onboardingActionsEnter {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 420ms cubic-bezier(0.22, 1, 0.36, 1) 920ms,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1) 920ms;
+}
+
+.onboardingStartButton {
+  height: var(--spacing-8x);
+  padding: var(--spacing-2x) var(--spacing-4x);
+  border-radius: var(--rounding-2-5x);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+}
+
+.firstClientMessage {
+  animation: first-client-message-enter 260ms ease both;
+}
+
+@keyframes onboarding-panel-enter {
+  from {
+    opacity: 0;
+    transform: none;
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes first-client-message-enter {
+  from {
+    opacity: 0;
+    transform: translateY(var(--spacing-2x));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---- Inbox (AI/Client) message - left aligned per Figma 349:17545 ---- */
+.inboxMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  align-self: flex-start;
+  background-color: var(--color-container-transparent-1);
+  border-radius: var(--rounding-2-5x);
+  padding: var(--spacing-2x) var(--spacing-2-5x);
+  gap: var(--spacing-1x);
+}
+
+.inboxHeader {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+  padding: 0;
+  border-radius: 0;
+}
+
+.avatar {
+  width: var(--spacing-6x);
+  height: var(--spacing-6x);
+  border-radius: 50%;
+  background-color: var(--color-category-amethyst);
+  flex-shrink: 0;
+}
+
+.inboxTitle {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-primary);
+}
+
+.inboxContent {
+  padding: 0;
+  padding-right: 0;
+}
+
+.inboxText {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--color-primitive-primary);
+}
+
+.inboxSpacer {
+  height: var(--spacing-m);
+  width: 100%;
+}
+
+/* ---- User (Outbox) message - right aligned per Figma 349:17563 ---- */
+.userMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  align-self: flex-end;
+}
+
+.userMessageContent {
+  background-color: var(--color-bg-brand-1);
+  padding: var(--spacing-xs) var(--spacing-s) var(--spacing-2-5x);
+  border-radius: var(--rounding-2-5x);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.userMessageText {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--color-primitive-primary);
+}
+
+/* ---- Typing message (purple, live draft) ---- */
+.typingMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  align-self: flex-end;
+}
+
+.typingBubble {
+  background-color: var(--color-bg-brand-1);
+  padding: var(--spacing-xs) var(--spacing-s) var(--spacing-1-25x);
+  border-radius: var(--rounding-2-5x);
+  width: fit-content;
+  max-width: 100%;
+  transition: opacity 0.15s ease;
+}
+
+.typingText {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--color-primitive-primary);
+}
+
+/* ---- Message container (input area) ---- */
+.messageContainer {
+  flex-shrink: 0;
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+  padding-bottom: var(--spacing-m);
+  width: 100%;
+  background-color: var(--color-page-primary);
+}
+
+.messageContainerTop {
+  padding-bottom: var(--spacing-2x);
+}
+
+.scrollToLatestButton {
+  position: absolute;
+  left: 50%;
+  top: calc((var(--spacing-10x) + var(--spacing-1x) + var(--spacing-2-5x)) * -1);
+  transform: translateX(-50%);
+  width: calc(var(--spacing-10x) + var(--spacing-1x));
+  height: calc(var(--spacing-10x) + var(--spacing-1x));
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-bg-default);
+  color: var(--color-primitive-primary);
+  box-shadow: var(--shadow-card);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scrollToLatestButtonTop {
+  top: calc(100% + var(--spacing-2-5x));
+}
+
+.scrollToLatestButton:hover {
+  background-color: var(--color-bg-neutral-1);
+}
+
+.scrollToLatestButton:active {
+  transform: translateX(-50%) translateY(1px);
+}
+
+.scrollToLatestButton:focus-visible {
+  outline: 2px solid var(--color-primitive-brand);
+  outline-offset: 2px;
+}
+
+.inputWrapper {
+  background-color: var(--color-container-transparent-1);
+  border-radius: var(--rounding-3x);
+  padding: 0 var(--spacing-5x);
+  overflow: hidden;
+  transform-origin: center bottom;
+  animation: input-wrapper-enter 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+.inputLabel {
+  margin: 0;
+  padding-top: var(--spacing-3x);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-primary);
+}
+
+@keyframes input-wrapper-enter {
+  0% {
+    opacity: 0;
+    transform: translate3d(var(--spacing-3x), var(--spacing-4x), 0) scaleX(0.72) scaleY(0.86);
+  }
+
+  55% {
+    opacity: 1;
+    transform: translate3d(0, calc(var(--spacing-1x) * -1), 0) scaleX(1.02) scaleY(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scaleX(1) scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .onboardingBubblePreEnter,
+  .onboardingBubbleEnter,
+  .onboardingActions,
+  .onboardingActionsEnter {
+    transition: none;
+    transform: none;
+  }
+
+  .onboardingBubblePreEnter,
+  .onboardingBubbleEnter,
+  .onboardingActions,
+  .onboardingActionsEnter {
+    opacity: 1;
+  }
+
+  .inputWrapper {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+}

@@ -1,0 +1,205 @@
+/**
+ * CSS Variables for Design Tokens
+ * Generated from Figma variables structure
+ * 
+ * Usage:
+ *   color: var(--color-primitive-primary);
+ *   padding: var(--spacing-1x);
+ */
+
+:root {
+  /* Colors - Primitive */
+  --color-primitive-primary: #191919;
+  --color-primitive-primary-fixed: #191919;
+  --color-primitive-primary-on-inverse: #ffffff;
+  --color-primitive-primary-on-inverse-fixed: #ffffff;
+  
+  --color-primitive-secondary: #676767;
+  --color-primitive-secondary-fixed: #676767;
+  --color-primitive-secondary-on-inverse: #aeaeae;
+  --color-primitive-secondary-on-inverse-fixed: #aeaeae;
+  
+  --color-primitive-neutral-4: #949494;
+  --color-primitive-neutral-4-fixed: #949494;
+  --color-primitive-neutral-4-on-inverse: #777777;
+  --color-primitive-neutral-4-on-inverse-fixed: #777777;
+  
+  --color-primitive-neutral-3: #c8c8c8;
+  --color-primitive-neutral-3-fixed: #c8c8c8;
+  --color-primitive-neutral-3-on-inverse: #5e5e5e;
+  --color-primitive-neutral-3-on-inverse-fixed: #5e5e5e;
+  
+  --color-primitive-neutral-2: #d4d4d4;
+  --color-primitive-neutral-2-fixed: #d4d4d4;
+  --color-primitive-neutral-2-on-inverse: #525252;
+  --color-primitive-neutral-2-on-inverse-fixed: #525252;
+  
+  --color-primitive-neutral-1: #e1e1e1;
+  --color-primitive-neutral-1-fixed: #e1e1e1;
+  --color-primitive-neutral-1-on-inverse: #474747;
+  --color-primitive-neutral-1-on-inverse-fixed: #474747;
+  
+  --color-primitive-default: #ffffff;
+  --color-primitive-default-fixed: #ffffff;
+  
+  --color-primitive-brand: #835de1;
+  --color-primitive-brand-fixed: #835de1;
+  --color-primitive-brand-on-inverse: #9b7ef1;
+  
+  --color-primitive-error: #d84d4d;
+  --color-primitive-error-fixed: #d84d4d;
+  --color-primitive-error-on-inverse: #fc6667;
+  
+  --color-primitive-success: #5cad9a;
+  --color-primitive-success-fixed: #5cad9a;
+  --color-bg-success-1: #ddf8ef;
+  --color-primitive-success-on-inverse: #5cad9a;
+  
+  --color-primitive-warning: #f0c555;
+  --color-primitive-warning-fixed: #f0c555;
+  --color-primitive-warning-on-inverse: #f0c555;
+  
+  /* Colors - State */
+  --color-state-container-transparent-1-active: rgba(25, 25, 25, 0.1); /* #1919191a */
+  --color-state-bg-brand-active: #9b7ef1;
+  --color-state-bg-default-fixed-active: rgba(255, 255, 255, 0.9); /* #ffffffe5 */
+  
+  /* Colors - Translucent */
+  --color-translucent-primitive-neutral-4: rgba(25, 25, 25, 0.45); /* #19191973 */
+  
+  /* Colors - Background */
+  --color-bg-neutral-5: #777777;
+  --color-bg-neutral-4: #aeaeae;
+  --color-bg-neutral-3: #e1e1e1;
+  --color-bg-neutral-2: #eeeeee;
+  --color-bg-neutral-1: #f4f4f4;
+  
+  --color-bg-default: #ffffff;
+  --color-bg-default-fixed: #ffffff;
+  
+  --color-bg-inverse: #191919;
+  --color-bg-inverse-fixed: #191919;
+  
+  --color-bg-brand: #835de1;
+  --color-bg-brand-fixed: #835de1;
+  --color-bg-brand-5: #b39df7;
+  --color-bg-brand-4: #cabef3;
+  --color-bg-brand-3: #d6cef3;
+  --color-bg-brand-2: #e2ddf6;
+  --color-bg-brand-1: #efedf8;
+  
+  /* Colors - Container */
+  --color-container-default: #ffffff;
+  --color-container-transparent-1: rgba(25, 25, 25, 0.05);
+  --color-container-transparent-1-fixed: rgba(25, 25, 25, 0.05);
+  --color-container-transparent-1-on-inverse-fixed: rgba(255, 255, 255, 0.1); /* #ffffff1a */
+  
+  /* Colors - Page */
+  --color-page-primary: #ffffff;
+  --color-page-secondary: #f9f9f9;
+  
+  /* Colors - Overlay */
+  --color-overlay-popup: rgba(25, 25, 25, 0.4);
+  --color-overlay-primary-alpha-050: rgba(25, 25, 25, 0.5);
+  --color-overlay-primary-alpha-050-fixed: rgba(25, 25, 25, 0.5);
+  
+  /* Typography */
+  --font-family-primary: "TT Norms Tochka Extended", sans-serif;
+  
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-demi-bold: 600;
+  
+  --font-size-xs: 12px;
+  --font-size-s: 14px;
+  --font-size-m: 16px;
+  --font-size-18: 18px;
+  --font-size-l: 22px;
+  --font-size-xl: 20px; /* TTN-600-XL */
+  --font-size-2xl: 24px; /* TTN-600-2XL */
+  --font-size-3xl: 30px;
+  --font-size-5xl: 42px; /* TTN 600/5XL */
+  
+  --line-height-xs: 15px;
+  --line-height-s: 18px;
+  --line-height-m: 20px;
+  --line-height-xl: 26px; /* TTN-600-XL */
+  --line-height-2xl: 30px; /* TTN-600-2XL */
+  --line-height-3xl: 36px;
+  --line-height-5xl: 48px; /* TTN 600/5XL */
+  
+  --letter-spacing-xs: 0.12px;
+  --letter-spacing-s: 0.14px;
+  --letter-spacing-m: 0.16px;
+  
+  /* Spacing */
+  --spacing-base: 4px;
+  --spacing-0-5x: 2px;
+  --spacing-1x: 4px;
+  --spacing-1-25x: 5px;
+  --spacing-1-5x: 6px;
+  --spacing-2x: 8px;
+  --spacing-2-5x: 10px;
+  --spacing-3x: 12px;
+  --spacing-4x: 16px;
+  --spacing-5x: 20px;
+  --spacing-6x: 24px;
+  --spacing-8x: 32px;
+  --spacing-10x: 40px;
+  --spacing-12x: 48px;
+  --spacing-6-25x: 25px;
+
+  /* Semantic spacing (from Figma specification) */
+  --spacing-xs: 10px;
+  --spacing-s: 15px;
+  --spacing-m: 20px;
+  --spacing-xl: 30px;
+  --spacing-5xl: 60px;
+  --spacing-7xl: 80px;
+
+  /* Layout */
+  --content-max-width: 640px;
+  --chat-feed-max-width: 670px;
+  --size-avatar-m: 44px;
+  
+  /* Rounding */
+  --rounding-base: 4px;
+  --rounding-1x: 4px;
+  --rounding-2x: 8px;
+  --rounding-6x: 24px;
+  
+  /* Additional rounding values (from Figma specification) */
+  --rounding-1-5x: 6px;
+  --rounding-2-5x: 10px;
+  --rounding-3x: 12px;
+  --rounding-4-5x: 18px;
+
+  /* Bank/Primitive/Border (Figma Borders/Bottom Line) */
+  --color-bank-primitive-border: rgba(174, 174, 174, 0.45);
+
+  /* Surfaces (from Figma) */
+  --shadow-card: 0 5px 15px rgba(0, 0, 0, 0.05);
+  --shadow-popout: 0 20px 40px rgba(0, 0, 0, 0.1);
+  
+  /* Popup/Primary color (for modal/popup backgrounds) */
+  --color-popup-primary: #ffffff;
+  
+  /* Shadow - subtle card (Figma Surfaces/Card) */
+  --shadow-card-subtle: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  /* Category colors (for segmented bars) */
+  --color-category-sand: #de9c7e;
+  --color-category-coral: #e59594;
+  --color-category-flamingo: #d796c1;
+  --color-category-orchid: #c799df;
+  --color-category-amethyst: #b79fe9;
+  --color-category-indigo: #95aee2;
+}
+
+/* Page shell – ensure light background per Figma */
+body {
+  background-color: var(--color-page-primary);
+  color: var(--color-primitive-primary);
+  margin: 0;
+}

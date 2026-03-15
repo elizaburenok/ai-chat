@@ -1,0 +1,106 @@
+/**
+ * DrawerFooter Component Styles
+ * Footer section for Drawer (sidebar)
+ * Supports: Empty, 1 Button, 2 stacked Buttons, 2 horizontal Buttons
+ */
+
+.drawer-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 20px 16px 20px;
+  border-top: 1px solid var(--color-primitive-neutral-2, #d4d4d4);
+  background-color: var(--color-page-primary, #ffffff);
+  box-sizing: border-box;
+}
+
+.drawer-footer--empty {
+  min-height: 30px;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top: none;
+}
+
+.drawer-footer--row {
+  /* When used with 2 horizontal buttons */
+}
+
+.drawer-footer--column {
+  /* Default stacked buttons layout */
+}
+
+.drawer-footer__description {
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.14px;
+  font-weight: 400;
+  color: var(--color-primitive-secondary, #676767);
+  text-align: center;
+}
+
+.drawer-footer__buttons {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.drawer-footer__buttons--column {
+  flex-direction: column;
+}
+
+.drawer-footer__buttons--row {
+  flex-direction: row;
+}
+
+.drawer-footer__button {
+  flex: 1;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px; /* TTN 500/L */
+  letter-spacing: 0;
+  transition: background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+
+.drawer-footer__button--primary {
+  background-color: var(--color-bg-brand, #835de1);
+  color: var(--color-primitive-default-fixed, #ffffff);
+}
+
+.drawer-footer__button--primary:hover:not(:disabled) {
+  background-color: var(--color-state-bg-brand-active, #9b7ef1);
+}
+
+.drawer-footer__button--secondary {
+  background-color: var(--color-container-transparent-1, rgba(25, 25, 25, 0.05));
+  color: var(--color-primitive-primary, #191919);
+}
+
+.drawer-footer__button--secondary:hover:not(:disabled) {
+  background-color: var(--color-state-container-transparent-1-active, rgba(25, 25, 25, 0.1));
+}
+
+.drawer-footer__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.drawer-footer__button-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
+}
+
+

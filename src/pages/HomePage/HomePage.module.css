@@ -1,0 +1,166 @@
+/**
+ * HomePage layout per Figma (node 344:25088)
+ * Top: MainNavBar
+ * Body: Left sidebar (280px) | Center (720px) | Right widget (340px)
+ * Uses tokens only.
+ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-page-primary);
+}
+
+.body {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) 340px;
+  gap: var(--spacing-5x);
+  flex: 1;
+  padding: var(--spacing-5x);
+}
+
+/* Left: Back button + Тренажёр title */
+.leftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5x);
+  width: 280px;
+}
+
+/* Figma TTN 600/2XL: 24px for "Тренажёр" title */
+.leftColumn :global(.navigation-bar__title) {
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+}
+
+/* Center: Search + skills grid */
+.centerColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6x);
+  min-width: 0;
+}
+
+.searchWrapper {
+  width: 100%;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-4x);
+  width: 100%;
+}
+
+/* Right: Widget */
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+}
+
+.widget {
+  width: 100%;
+}
+
+.widget :global(.widget__footer) {
+  justify-content: center;
+}
+
+/* Figma empty state (node 344:25118): icon + two-line text, gap 25px */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-6-25x);
+  padding: var(--spacing-xl) var(--spacing-m);
+  text-align: center;
+}
+
+.emptyStateIcon {
+  width: 54px;
+  height: 54px;
+  color: var(--color-primitive-neutral-3);
+}
+
+.emptyStateText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  width: 100%;
+}
+
+.emptyStateTitle {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--color-primitive-primary);
+}
+
+.emptyStateSubtitle {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-secondary);
+}
+
+/* Passed dialogs list */
+.passedList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2x);
+  width: 100%;
+}
+
+.passedItem {
+  border-bottom: 1px solid var(--color-bg-neutral-2);
+}
+
+.passedItem:last-child {
+  border-bottom: none;
+}
+
+.passedItemCell :global(.cell) {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.historyIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--rounding-2-5x);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1200px) {
+  .body {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rightColumn {
+    grid-column: 1 / -1;
+    max-width: 340px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .body {
+    grid-template-columns: 1fr;
+    padding: var(--spacing-5x);
+  }
+
+  .leftColumn {
+    width: 100%;
+  }
+
+  .rightColumn {
+    max-width: 100%;
+  }
+}

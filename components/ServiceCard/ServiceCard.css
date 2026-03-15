@@ -1,0 +1,97 @@
+/**
+ * ServiceCard Component Styles
+ * Uses design tokens from tokens/css-variables.css
+ * Card with icon/avatar, title, subtitle – links or buttons to app pages
+ */
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-4x);
+  padding: var(--spacing-m);
+  background-color: var(--color-bg-default);
+  border-radius: var(--rounding-3x);
+  border: 1px solid var(--color-bg-neutral-2);
+  box-shadow: var(--shadow-card-subtle);
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  text-decoration: none;
+  text-align: left;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.service-card:hover {
+  background-color: var(--color-bg-neutral-1);
+  border-color: var(--color-bg-neutral-3);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.service-card:active {
+  background-color: var(--color-container-transparent-1);
+}
+
+.service-card:focus-visible {
+  outline: 2px solid var(--color-primitive-brand);
+  outline-offset: 2px;
+}
+
+/* Icon wrapper – 44×44 per Figma */
+.service-card__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--rounding-2-5x);
+  flex-shrink: 0;
+}
+
+.service-card__icon-wrapper svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-primitive-primary);
+}
+
+.service-card__avatar {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: var(--rounding-2-5x);
+  flex-shrink: 0;
+}
+
+/* Content */
+.service-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1x);
+  flex: 1;
+  min-width: 0;
+}
+
+.service-card__title {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-demi-bold);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--color-primitive-primary);
+}
+
+.service-card__subtitle {
+  flex: none;
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-secondary);
+}

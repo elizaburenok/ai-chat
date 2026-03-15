@@ -1,0 +1,292 @@
+/**
+ * Dropdown Component Styles
+ * Uses design tokens from the design system
+ */
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-default, #ffffff);
+  font-family: var(--font-family-primary);
+}
+
+/* Desktop Mode */
+.dropdown--mode-desktop {
+  width: 300px;
+  max-height: 280px;
+  border-radius: 12px; /* Rounding 3x */
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1000;
+}
+
+/* Adaptive/Mobile Mode */
+.dropdown--mode-adaptive {
+  width: 375px;
+  border-radius: 12px 12px 0 0; /* Top corners only, Rounding 3x */
+  overflow: hidden;
+  padding-bottom: 30px;
+  padding-top: 0;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* Header (for adaptive mode) */
+.dropdown__header {
+  background-color: var(--color-bg-default, #ffffff);
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown__grip {
+  width: 40px;
+  height: 5px;
+  background-color: var(--color-primitive-neutral-1, #e1e1e1);
+  border-radius: 5px;
+  margin: 5px auto;
+}
+
+.dropdown__title-section {
+  background-color: var(--color-bg-default, #ffffff);
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.dropdown__title {
+  font-family: var(--font-family-primary);
+  font-size: 20px;
+  font-weight: var(--font-weight-demi-bold, 600);
+  line-height: 26px;
+  letter-spacing: 0px;
+  color: var(--color-primitive-primary, #191919);
+  margin: 0;
+  flex: 1;
+}
+
+/* Content Container */
+.dropdown__content {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Desktop content scrolling */
+.dropdown--mode-desktop .dropdown__content {
+  max-height: 280px;
+}
+
+/* Custom scrollbar for desktop */
+.dropdown--mode-desktop .dropdown__content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dropdown--mode-desktop .dropdown__content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dropdown--mode-desktop .dropdown__content::-webkit-scrollbar-thumb {
+  background-color: var(--color-translucent-primitive-neutral-4, rgba(25, 25, 25, 0.45));
+  border-radius: 6px; /* Rounding 1,5x */
+  opacity: 0.5;
+}
+
+.dropdown--mode-desktop .dropdown__content::-webkit-scrollbar-thumb:hover {
+  opacity: 0.7;
+}
+
+/* Firefox scrollbar */
+.dropdown--mode-desktop .dropdown__content {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(25, 25, 25, 0.45) transparent;
+}
+
+/* Cell Wrapper - handles padding differences between desktop and mobile */
+.dropdown__cell-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+/* Desktop cell padding */
+.dropdown--mode-desktop .dropdown__cell-wrapper {
+  padding: 10px 20px;
+}
+
+/* Adaptive/Mobile cell padding */
+.dropdown--mode-adaptive .dropdown__cell-wrapper {
+  padding: 15px 20px;
+}
+
+/* Cell component styling override - remove default padding, handled by wrapper */
+.dropdown__cell {
+  width: 100%;
+}
+
+.dropdown__cell-wrapper > .dropdown__cell.cell--size-M {
+  padding: 0 !important; /* Remove default Cell padding, wrapper handles spacing */
+}
+
+/* Hover state for dropdown cells - applies to entire wrapper area including padding */
+.dropdown__cell-wrapper:hover:not(:has(.cell--disabled)) {
+  background-color: rgba(25, 25, 25, 0.05);
+}
+
+/* Disable Cell's own hover background when inside dropdown to prevent double hover effects */
+.dropdown__cell-wrapper .dropdown__cell.cell--clickable:hover {
+  background-color: transparent; /* Let wrapper handle hover */
+}
+
+/* Ensure text truncates when checkboxes are shown */
+.dropdown--has-checkbox .cell__content-wrapper {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dropdown--has-checkbox .cell__content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropdown--has-checkbox .cell__icon--right {
+  flex-shrink: 0;
+}
+
+/* Ensure checkbox doesn't shrink and has proper spacing */
+.dropdown--has-checkbox .dropdown__checkbox {
+  flex-shrink: 0;
+}
+
+/* Group styling (for list-groups type) */
+.dropdown__group {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown__group:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.dropdown__group-header {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown__group-header-cell {
+  padding: 0 !important; /* Remove default Cell padding */
+  width: 100%;
+}
+
+/* Empty State */
+.dropdown__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 30px 20px;
+}
+
+.dropdown--mode-adaptive .dropdown__empty {
+  padding-top: 80px;
+  padding-bottom: 30px;
+}
+
+.dropdown__empty-message {
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: var(--font-weight-regular, 400);
+  line-height: 20px;
+  letter-spacing: 0.16px;
+  color: var(--color-primitive-secondary, #676767);
+  text-align: center;
+  margin: 0;
+}
+
+/* Loading State */
+.dropdown__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  background-color: var(--color-page-primary, #ffffff);
+}
+
+.dropdown--mode-adaptive .dropdown__loading {
+  padding-top: 80px;
+  padding-bottom: 30px;
+}
+
+.dropdown__spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Hide dropdown when closed */
+.dropdown:not(.dropdown--open) {
+  display: none;
+}
+
+/* Checkbox Right Accessory */
+.dropdown__checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  border: 1.5px solid var(--color-primitive-neutral-3, #c8c8c8);
+  background-color: var(--color-bg-default, #ffffff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+}
+
+.dropdown__checkbox--checked {
+  background-color: var(--color-primitive-brand, #835de1);
+  border-color: var(--color-primitive-brand, #835de1);
+}
+
+.dropdown__checkbox--disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.dropdown__checkbox-icon {
+  width: 12px;
+  height: 12px;
+  color: var(--color-primitive-primary-on-inverse, #ffffff);
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Hover state for checkbox (when cell is hovered) */
+.dropdown__cell-wrapper:hover:not(:has(.cell--disabled)) .dropdown__checkbox:not(.dropdown__checkbox--checked):not(.dropdown__checkbox--disabled) {
+  border-color: var(--color-primitive-neutral-4, #949494);
+}
+
+.dropdown__cell-wrapper:hover:not(:has(.cell--disabled)) .dropdown__checkbox--checked:not(.dropdown__checkbox--disabled) {
+  background-color: var(--color-bg-brand-5, #b39df7);
+  border-color: var(--color-bg-brand-5, #b39df7);
+}
+

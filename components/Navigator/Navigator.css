@@ -1,0 +1,179 @@
+/**
+ * Navigator — selection card with header, radio list, and action button.
+ * Values from Figma design (node 85-5956).
+ */
+
+.navigator {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--spacing-m);
+  background-color: var(--color-bg-default);
+  border-radius: var(--rounding-3x);
+  box-shadow: var(--shadow-popout);
+  font-family: var(--font-family-primary);
+}
+
+/* Header: title + chevron */
+.navigator__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-2x);
+  margin-bottom: var(--spacing-4x);
+  cursor: default;
+}
+
+.navigator__header[role="button"] {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  will-change: opacity;
+}
+
+.navigator__header[role="button"]:hover {
+  opacity: 0.85;
+}
+
+.navigator__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-demi-bold);
+  line-height: var(--line-height-xl);
+  letter-spacing: 0;
+  color: var(--color-primitive-primary);
+}
+
+.navigator__chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primitive-primary);
+  flex-shrink: 0;
+}
+
+.navigator__chevron-icon {
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+
+.navigator__header[role="button"]:hover .navigator__chevron-icon {
+  transform: translateX(2px);
+}
+
+/* List of options */
+.navigator__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: var(--spacing-4x);
+}
+
+.navigator__row {
+  display: flex;
+  align-items: center;
+  gap: var(--rounding-3x);
+  padding: var(--spacing-xs) 0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  will-change: background-color;
+  border-radius: var(--rounding-1-5x);
+  margin: 0 calc(-1 * var(--spacing-1x));
+  padding-left: var(--spacing-1x);
+  padding-right: var(--spacing-1x);
+}
+
+.navigator__row:hover {
+  background-color: var(--color-container-transparent-1);
+}
+
+.navigator__row[aria-disabled="true"] {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.navigator__row[aria-disabled="true"]:hover {
+  background-color: transparent;
+}
+
+/* Avatar circle */
+.navigator__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.navigator__avatar-letter {
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-demi-bold);
+  line-height: 1;
+}
+
+/* Label */
+.navigator__label {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--color-primitive-primary);
+}
+
+/* Bottom button */
+.navigator__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 44px;
+  padding: var(--rounding-3x) var(--spacing-s);
+  background-color: var(--color-bg-neutral-2);
+  color: var(--color-primitive-primary);
+  border: none;
+  border-radius: var(--rounding-2-5x);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+  will-change: background-color, transform, opacity;
+}
+
+.navigator__button:hover {
+  background-color: var(--color-bg-neutral-3);
+}
+
+.navigator__button:active {
+  transform: scale(0.98);
+}
+
+/* Responsive: tablet */
+@media (min-width: 768px) {
+  .navigator {
+    padding: var(--spacing-6x);
+  }
+
+  .navigator__header {
+    margin-bottom: var(--spacing-4x);
+  }
+
+  .navigator__list {
+    margin-bottom: var(--spacing-4x);
+  }
+
+  .navigator__row {
+    padding: var(--rounding-3x) var(--spacing-1x);
+  }
+}
+
+/* Responsive: desktop */
+@media (min-width: 1024px) {
+  .navigator {
+    padding: var(--spacing-6x);
+  }
+}

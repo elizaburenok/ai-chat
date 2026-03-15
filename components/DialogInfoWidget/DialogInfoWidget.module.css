@@ -1,0 +1,35 @@
+.widget :global(.widget__content) {
+  padding-bottom: var(--spacing-2x);
+}
+
+.timerValue {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--color-primitive-primary);
+}
+
+.timerLabel {
+  margin-top: var(--spacing-0-5x);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-secondary);
+}
+
+.pauseButton {
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: var(--color-bg-brand-1);
+}
+
+.pauseButton :global(.button__label) {
+  color: var(--color-primitive-primary);
+  font-size: var(--font-size-m) !important;
+}
+
+.pauseButton:hover {
+  background-color: var(--color-bg-brand-2);
+}

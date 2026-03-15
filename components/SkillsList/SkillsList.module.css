@@ -1,0 +1,112 @@
+/**
+ * SkillsList styles - Figma parity
+ * Uses tokens from tokens/css-variables.css
+ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Header "Все темы" - TTN 600/2XL per Figma */
+.sectionHeader {
+  margin: 0;
+  padding: var(--spacing-s) var(--spacing-m);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-demi-bold);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+  color: var(--color-primitive-primary);
+}
+
+/* Chip Carousel - horizontal scroll */
+.chipCarouselWrapper {
+  overflow: hidden;
+  padding: 0 var(--spacing-m);
+}
+
+.chipCarousel {
+  display: flex;
+  gap: var(--spacing-xs);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: var(--spacing-s);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chipCarousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Skill groups */
+.groups {
+  display: flex;
+  flex-direction: column;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Theme section title - TTN 500/S: 14px, secondary color, padding 15px 20px */
+.groupTitle {
+  margin: 0;
+  padding: var(--spacing-s) var(--spacing-m);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  color: var(--color-primitive-secondary);
+}
+
+/* Skills as list rows - Cell L layout */
+.skillsList {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Skill link - proper <a> for navigation, removes default link styles */
+.skillLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border-radius: var(--rounding-1x);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.skillLink:hover .cell {
+  background-color: var(--color-state-container-transparent-1-active);
+}
+
+.skillLink:active .cell {
+  background-color: var(--color-container-transparent-1);
+}
+
+.skillLink:focus-visible {
+  outline: 2px solid var(--color-primitive-brand);
+  outline-offset: 2px;
+}
+
+/* 44x44 avatar icon for skill row */
+.skillIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--rounding-2-5x);
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.emptyState {
+  margin: 0;
+  padding: var(--spacing-6x);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--color-primitive-secondary);
+  text-align: center;
+}

@@ -1,0 +1,286 @@
+/**
+ * Cell Component Styles
+ * Uses design tokens from the design system
+ */
+
+.cell {
+  display: flex;
+  font-family: var(--font-family-primary);
+  color: var(--color-primitive-primary, #191919);
+  background-color: transparent;
+  transition: background-color 0.15s ease;
+}
+
+/* Size variants */
+.cell--size-S {
+  padding: 15px 20px;
+  gap: 8px;
+}
+
+/* Size M - Will be defined when M variant is analyzed */
+.cell--size-M {
+  padding: 15px 20px;
+}
+
+/* Size L - Will be defined when L variant is analyzed */
+.cell--size-L {
+  padding: 15px 20px;
+  gap: 0px;
+}
+
+/* Adjust padding for default M-sized left-aligned cells */
+.cell--size-M.cell--variant-default.cell--align-left {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Alignment variants */
+.cell--align-left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.cell--align-center {
+  justify-content: center;
+  text-align: center;
+}
+
+.cell--align-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* Variant styles */
+.cell--variant-default {
+  color: var(--color-primitive-primary, #191919);
+}
+
+.cell--variant-primary {
+  color: var(--color-primitive-primary, #191919);
+  font-weight: var(--font-weight-medium, 500);
+}
+
+.cell--variant-secondary {
+  color: var(--color-primitive-secondary, #676767);
+}
+
+.cell--variant-neutral {
+  color: var(--color-primitive-neutral-4, #949494);
+}
+
+/* States */
+.cell--disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.cell--clickable {
+  cursor: pointer;
+  border-radius: var(--rounding-1x, 4px);
+}
+
+.cell--clickable:not(.cell--disabled):hover {
+  background-color: var(--color-state-container-transparent-1-active, rgba(25, 25, 25, 0.1));
+}
+
+.cell--clickable:not(.cell--disabled):active {
+  background-color: var(--color-container-transparent-1, rgba(25, 25, 25, 0.05));
+}
+
+.cell--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cell--truncate .cell__content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* Content parts */
+.cell__content-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Size S, M, L - Content wrapper (gap between subtitle / title / description) */
+.cell--size-S .cell__content-wrapper,
+.cell--size-M .cell__content-wrapper,
+.cell--size-L .cell__content-wrapper {
+  gap: 2px;
+}
+
+.cell__subtitle {
+  color: var(--color-primitive-secondary, #676767);
+  font-style: normal;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.cell__label {
+  color: var(--color-primitive-secondary, #676767);
+  font-style: normal;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* Size S, M, L - Subtitle and Label */
+.cell--size-S .cell__subtitle,
+.cell--size-S .cell__label,
+.cell--size-M .cell__subtitle,
+.cell--size-M .cell__label,
+.cell--size-L .cell__subtitle,
+.cell--size-L .cell__label {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.14px;
+}
+
+.cell__content {
+  min-width: 0;
+  color: var(--color-primitive-primary, #191919);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Size S - Content */
+.cell--size-S .cell__content {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.14px;
+}
+
+/* Size M - Content */
+.cell--size-M .cell__content {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.16px;
+}
+
+/* Size L - Content */
+.cell--size-L .cell__content {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0; /* per TTN 500/L token */
+}
+
+/* Bulleted list styles */
+.cell__content-list {
+  margin: 0;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.cell__content-list-item {
+  display: list-item;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 2px;
+}
+
+.cell__content-list-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Size S - List items */
+.cell--size-S .cell__content-list-item {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.14px;
+}
+
+/* Size M - List items */
+.cell--size-M .cell__content-list-item {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.16px;
+}
+
+/* Size L - List items */
+.cell--size-L .cell__content-list-item {
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0;
+}
+
+.cell--align-center .cell__content-wrapper {
+  align-items: center;
+  text-align: center;
+}
+
+.cell--align-right .cell__content-wrapper {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.cell__suffix {
+  color: var(--color-primitive-secondary, #676767);
+  white-space: nowrap;
+}
+
+/* Size S, M, L - Suffix */
+.cell--size-S .cell__suffix,
+.cell--size-M .cell__suffix,
+.cell--size-L .cell__suffix {
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.12px;
+}
+
+/* Icons */
+.cell__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--color-primitive-neutral-4, #949494);
+}
+
+/* Size S & M - Left Icon (accessory gap and size) */
+.cell--size-S .cell__icon--left,
+.cell--size-M .cell__icon--left {
+  padding-right: 12px;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+}
+
+/* Size L - Left Icon (larger gap for big cell) */
+.cell--size-L .cell__icon--left {
+  padding-right: 16px;
+  width: 44px;
+  height: 44px;
+  font-size: 44px;
+  align-items: flex-start;
+  padding-top: 0;
+}
+
+/* Size S, M, L - Right Icon (disclosure) */
+.cell--size-S .cell__icon--right,
+.cell--size-M .cell__icon--right,
+.cell--size-L .cell__icon--right {
+  padding-left: 15px;
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+
+/* Variant-specific icon colors */
+.cell--variant-primary .cell__icon {
+  color: var(--color-primitive-primary, #191919);
+}
+
+.cell--variant-secondary .cell__icon {
+  color: var(--color-primitive-secondary, #676767);
+}
+
+.cell--variant-neutral .cell__icon {
+  color: var(--color-primitive-neutral-4, #949494);
+}
+

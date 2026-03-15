@@ -1,0 +1,73 @@
+куь.contextual-notification {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background-color: var(--color-container-transparent-1, rgba(25, 25, 25, 0.05));
+  box-shadow: inset 0 -0.5px 0 0 var(--color-bg-neutral-2, #eeeeee);
+  border: 1px solid var(--color-bg-neutral-2, #eeeeee);
+}
+
+.contextual-notification__icon {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primitive-warning, #f0c555);
+  flex-shrink: 0;
+}
+
+.contextual-notification__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.contextual-notification__title {
+  font-family: var(--font-family-primary);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.16px;
+  color: var(--color-primitive-primary, #191919);
+}
+
+.contextual-notification__subtitle {
+  font-family: var(--font-family-primary);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.14px;
+  color: var(--color-primitive-secondary, #676767);
+}
+
+.contextual-notification__action {
+  margin-left: auto;
+  padding: 6px 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-family-primary);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.14px;
+  color: var(--color-primitive-brand, #835de1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.contextual-notification__action:hover {
+  text-decoration: underline;
+}
+
+.contextual-notification__action:focus-visible {
+  outline: 2px solid var(--color-primitive-brand, #835de1);
+  outline-offset: 2px;
+}
+

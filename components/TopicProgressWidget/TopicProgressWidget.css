@@ -1,0 +1,123 @@
+.topic-progress-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.topic-progress-widget__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.topic-progress-widget__stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.topic-progress-widget__label {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+.topic-progress-widget__value {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.topic-progress-widget__value-suffix {
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+.topic-progress-widget__divider {
+  height: 1px;
+  background-color: var(--color-border-subtle);
+}
+
+.topic-progress-widget__topic {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.topic-progress-widget__topic-name {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-text-primary);
+}
+
+.topic-progress-widget__progress {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.topic-progress-widget__progress-value {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+.topic-progress-widget__placeholder {
+  margin: 4px 0 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}
+
+.topic-progress-widget__current-level {
+  margin-top: 4px;
+}
+
+.topic-progress-widget__motivation {
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}
+
+.topic-progress-widget__reward {
+  margin-top: 8px;
+}
+
+.topic-progress-widget__reward-title {
+  margin: 8px 0 4px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.topic-progress-widget__reward-body {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.topic-progress-widget__reward-image {
+  flex-shrink: 0;
+  width: 91px;
+  height: 106px;
+  object-fit: contain;
+}
+
+.topic-progress-widget__reward-description {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 960px) {
+  .topic-progress-widget__stat-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+

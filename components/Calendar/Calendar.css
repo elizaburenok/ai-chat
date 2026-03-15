@@ -1,0 +1,199 @@
+/**
+ * Calendar Component Styles
+ * Matches Figma design specifications
+ */
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-default, #ffffff);
+  border-radius: 18px; /* Rounding 4.5x */
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  padding-bottom: 20px;
+  width: 350px;
+  position: absolute;
+  z-index: 1000;
+  font-family: var(--font-family-primary);
+}
+
+/* Header */
+.calendar__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 15px;
+  border-bottom: none;
+}
+
+.calendar__month-section {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.calendar__month {
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: 600; /* DemiBold */
+  line-height: 20px;
+  letter-spacing: 0.16px;
+  color: var(--color-primitive-primary, #191919);
+}
+
+.calendar__chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: var(--color-primitive-primary, #191919);
+  flex-shrink: 0;
+}
+
+.calendar__chevron svg {
+  width: 100%;
+  height: 100%;
+}
+
+.calendar__year {
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: 600; /* DemiBold */
+  line-height: 20px;
+  letter-spacing: 0.16px;
+  color: var(--color-primitive-primary, #191919);
+  text-align: right;
+}
+
+/* Navigation */
+.calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.calendar__nav-button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  color: var(--color-primitive-primary, #191919);
+  transition: background-color 0.15s ease;
+  padding: 0;
+}
+
+.calendar__nav-button:hover {
+  background-color: rgba(25, 25, 25, 0.05);
+}
+
+.calendar__nav-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Grid */
+.calendar__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 0;
+}
+
+/* Weekday headers */
+.calendar__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar__weekday {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 0.12px;
+  color: var(--color-primitive-secondary, #676767);
+  text-align: center;
+  padding: 0;
+  height: auto;
+}
+
+/* Days grid */
+.calendar__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar__day {
+  width: 100%;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  border-radius: 6px; /* Rounding 1.5x */
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: 500; /* Medium */
+  line-height: 20px;
+  letter-spacing: 0.16px;
+  color: var(--color-primitive-primary, #191919);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+}
+
+.calendar__day:hover:not(:disabled) {
+  background-color: rgba(25, 25, 25, 0.05);
+}
+
+.calendar__day:disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+/* Weekend days (Saturday and Sunday) */
+.calendar__day--weekend {
+  color: var(--color-primitive-error, #d84d4d);
+}
+
+.calendar__day--weekend:disabled {
+  color: var(--color-primitive-error, #d84d4d);
+  opacity: 0.3;
+}
+
+/* Today */
+.calendar__day--today {
+  font-weight: 600;
+}
+
+/* Selected day */
+.calendar__day--selected {
+  background-color: var(--color-primitive-brand, #835de1);
+  color: var(--color-primitive-primary-on-inverse, #ffffff);
+  font-weight: 500;
+}
+
+.calendar__day--selected:hover {
+  background-color: var(--color-bg-brand-5, #b39df7);
+}
+
+.calendar__day--selected.calendar__day--weekend {
+  color: var(--color-primitive-primary-on-inverse, #ffffff);
+}
+
+/* Other month days */
+.calendar__day--other-month {
+  opacity: 0.3;
+}

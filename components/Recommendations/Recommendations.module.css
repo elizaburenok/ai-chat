@@ -1,0 +1,106 @@
+/**
+ * Recommendations block styles - Figma node 348:10678
+ * Uses tokens only.
+ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-s) var(--spacing-m);
+  min-height: 30px;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+  color: var(--color-primitive-primary);
+}
+
+.cards {
+  display: flex;
+  gap: var(--spacing-s);
+  padding: 0 var(--spacing-m);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.cards::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  padding: var(--spacing-m);
+  min-width: 217px;
+  width: 217px;
+  flex-shrink: 0;
+  border-radius: var(--rounding-2-5x);
+  background-color: var(--color-page-secondary);
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  background-color: var(--color-bg-neutral-1);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-primitive-brand);
+  outline-offset: 2px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.icon {
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+  color: var(--color-primitive-primary);
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-0-5x);
+  width: 100%;
+}
+
+.cardTitle {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--color-primitive-primary);
+}
+
+.cardLabel {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-secondary);
+}

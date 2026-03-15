@@ -1,0 +1,175 @@
+/**
+ * FeedbackCard Component Styles
+ * Uses design tokens from the design system
+ * Composed of Cell and PageAction components
+ */
+
+.feedback-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-neutral-1, #f4f4f4);
+  border-radius: 15px;
+  padding: 0 0 10px 0;
+  overflow: clip;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.feedback-card > .cell:first-child {
+  padding: 20px 20px 15px 20px;
+}
+
+.feedback-card > .cell:not(:first-child) {
+  padding: 10px 20px;
+}
+
+/* Footer Section */
+.feedback-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0;
+}
+
+.feedback-card__footer .page-action {
+  border-radius: 6px;
+  padding: 10px 20px;
+}
+
+/* Rating Icon */
+.feedback-card__rating-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.feedback-card__rating-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Contextual Notification */
+.feedback-card__contextual-notification {
+  display: flex;
+  align-items: flex-start;
+  border: 1px solid var(--color-translucent-primitive-neutral-2, rgba(25, 25, 25, 0.2));
+  border-radius: 12px;
+  padding: 0 20px;
+  margin: 10px 20px;
+  background: var(--Bg-Neutral-1, #F4F4F4);
+  box-sizing: border-box;
+}
+
+.feedback-card__notification-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 12px 12px 0;
+  flex-shrink: 0;
+}
+
+.feedback-card__notification-icon-wrapper svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.feedback-card__notification-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.feedback-card__notification-title {
+  font-family: var(--font-family-primary, "TT Norms Tochka Extended", sans-serif);
+  font-weight: var(--font-weight-regular, 400);
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.14px;
+  color: var(--color-primitive-primary, #191919);
+}
+
+.feedback-card__notification-action {
+  align-self: flex-start;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  width: auto;
+  min-width: 0;
+}
+
+.feedback-card__notification-action:hover {
+  background: none;
+}
+
+.feedback-card__notification-action:active {
+  background: none;
+}
+
+.feedback-card__notification-action .page-action__title {
+  font-family: var(--font-family-primary, "TT Norms Tochka Extended", sans-serif);
+  font-weight: var(--font-weight-medium, 500);
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.14px;
+  color: var(--color-primitive-brand, #835de1);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.feedback-card__notification-action:hover .page-action__title {
+  text-decoration: underline;
+}
+
+.feedback-card__notification-action .page-action__icon {
+  display: none;
+}
+
+.feedback-card__notification-action .page-action__content {
+  padding: 0;
+  gap: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .feedback-card {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .feedback-card__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .feedback-card__actions {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .feedback-card__footer {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .feedback-card__footer .page-action {
+    width: 100%;
+  }
+
+  .feedback-card__contextual-notification {
+    margin: 10px 12px;
+    padding: 0 15px;
+  }
+}
+

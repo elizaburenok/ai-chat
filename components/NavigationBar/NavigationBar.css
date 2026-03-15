@@ -1,0 +1,215 @@
+/**
+ * Navigation Bar Component Styles
+ * Vertical navigation component for left side of page
+ * Uses design tokens from the design system
+ */
+
+.navigation-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  background-color: transparent;
+}
+
+/* Back Button Section */
+.navigation-bar__button-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-m);
+  padding: var(--spacing-8x) var(--spacing-m) var(--spacing-xs) var(--spacing-m);
+  width: 100%;
+}
+
+.navigation-bar__back-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0 var(--spacing-1x);
+  border: 1px solid var(--color-translucent-primitive-neutral-4);
+  border-radius: var(--rounding-2-5x);
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  color: var(--color-primitive-primary);
+}
+
+.navigation-bar__back-button:hover:not(:disabled) {
+  background-color: var(--color-state-container-transparent-1-active);
+}
+
+.navigation-bar__back-button:active:not(:disabled) {
+  background-color: var(--color-container-transparent-1);
+}
+
+.navigation-bar__back-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.navigation-bar__back-button svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Text Block Section */
+.navigation-bar__text-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-4x) var(--spacing-m);
+  width: 100%;
+}
+
+/* Root Link */
+.navigation-bar__root-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+  padding: 0 var(--spacing-xs) 0 0;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+  will-change: opacity;
+  text-decoration: none;
+}
+
+.navigation-bar__root-link:hover {
+  opacity: 0.7;
+}
+
+.navigation-bar__root-link-text {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-primary);
+  white-space: nowrap;
+}
+
+.navigation-bar__root-link-chevron {
+  width: 14px;
+  height: 14px;
+  color: var(--color-primitive-neutral-3);
+  transform: rotate(90deg);
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.navigation-bar__root-link-chevron path {
+  stroke: currentColor;
+}
+
+/* Title */
+.navigation-bar__title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--rounding-1-5x);
+  width: 100%;
+}
+
+.navigation-bar__title {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-demi-bold);
+  font-size: var(--font-size-l);
+  line-height: var(--spacing-xl);
+  letter-spacing: 0;
+  color: var(--color-primitive-primary);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  text-align: left;
+}
+
+.navigation-bar__subtitle {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  letter-spacing: var(--letter-spacing-xs);
+  color: var(--color-primitive-secondary);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  text-align: left;
+}
+
+/* Navigation Items Section */
+.navigation-bar__items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Cell children need min-width: 0 to shrink in flex layout (prevents right-side cut-off) */
+.navigation-bar__items .cell {
+  width: 100%;
+  min-width: 0;
+}
+
+.navigation-bar__item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+  padding: var(--spacing-m) var(--spacing-xs);
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+  will-change: opacity;
+  text-align: left;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-primary);
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 1px;
+}
+
+.navigation-bar__item:hover:not(.navigation-bar__item--disabled):not(.navigation-bar__item--active) {
+  opacity: 0.5;
+}
+
+.navigation-bar__item:active:not(.navigation-bar__item--disabled) {
+  background-color: var(--color-container-transparent-1);
+}
+
+.navigation-bar__item--active {
+  font-weight: var(--font-weight-demi-bold);
+}
+
+.navigation-bar__item--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Focus visible for accessibility */
+.navigation-bar__back-button:focus-visible,
+.navigation-bar__item:focus-visible,
+.navigation-bar__items .cell:focus-visible {
+  outline: 2px solid var(--color-primitive-brand);
+  outline-offset: 2px;
+}
+

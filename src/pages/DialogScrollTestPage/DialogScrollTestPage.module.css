@@ -1,0 +1,61 @@
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+  padding: var(--spacing-xl);
+  background-color: var(--color-page-primary);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2x);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-demi-bold);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+  color: var(--color-primitive-primary);
+}
+
+.subtitle {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  color: var(--color-primitive-secondary);
+}
+
+.backLink {
+  width: fit-content;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  color: var(--color-primitive-brand);
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.backLink:focus-visible {
+  outline: var(--spacing-0-5x) solid var(--color-primitive-brand);
+  outline-offset: var(--spacing-0-5x);
+}
+
+.chatSection {
+  flex: 1;
+  min-height: 0;
+}
+
+.dialogChat {
+  height: 100%;
+  min-height: 0;
+}

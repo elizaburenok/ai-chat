@@ -1,0 +1,120 @@
+/**
+ * CriteriaAccordion styles
+ * Tokens from tokens/css-variables.css
+ */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+}
+
+.item {
+  border-radius: var(--rounding-2-5x);
+  overflow: hidden;
+}
+
+.trigger {
+  display: flex;
+  width: 100%;
+  padding: var(--spacing-xs) var(--spacing-m);
+  padding-right: var(--spacing-m);
+  border: none;
+  border-radius: var(--rounding-2-5x);
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.trigger:hover {
+  background-color: var(--color-state-container-transparent-1-active);
+}
+
+.trigger:active {
+  background-color: var(--color-container-transparent-1);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--color-primitive-brand);
+  outline-offset: 2px;
+}
+
+.triggerContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-0-5x);
+  flex: 1;
+  min-width: 0;
+}
+
+.triggerRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  width: 100%;
+}
+
+.triggerTitle {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--color-primitive-primary);
+}
+
+.triggerSubtitle {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-secondary);
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--color-primitive-secondary);
+  transition: transform 0.2s ease;
+}
+
+.chevronExpanded {
+  transform: rotate(180deg);
+}
+
+.body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease;
+}
+
+.bodyExpanded {
+  grid-template-rows: 1fr;
+}
+
+.bodyInner {
+  overflow: hidden;
+}
+
+.description {
+  margin: 0;
+  padding: var(--spacing-2x) var(--spacing-m) var(--spacing-s) var(--spacing-m);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-secondary);
+}

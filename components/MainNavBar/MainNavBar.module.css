@@ -1,0 +1,139 @@
+/**
+ * MainNavBar - top horizontal bar per Figma (node 344:25089)
+ * Logo | Nav buttons | User block
+ * Uses tokens only.
+ */
+
+.root {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 74px;
+  padding: var(--spacing-5x) var(--spacing-m);
+  background-color: var(--color-page-primary);
+  border-bottom: 1px solid var(--color-bg-neutral-2);
+  /* Figma Borders/Bottom Line: inner shadow */
+  box-shadow: inset 0 -1px 0 0 var(--color-bank-primitive-border);
+}
+
+.logo {
+  flex-shrink: 0;
+  padding-right: var(--spacing-m);
+}
+
+.logoText {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-demi-bold);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  color: var(--color-primitive-primary);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  flex: 1;
+  padding: 0 var(--spacing-m);
+}
+
+.navButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-s);
+  border: none;
+  background: transparent;
+  border-radius: var(--rounding-2-5x);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--color-primitive-primary);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.navButton:hover {
+  background-color: var(--color-container-transparent-1);
+}
+
+.navButton:focus-visible {
+  outline: 2px solid var(--color-primitive-brand);
+  outline-offset: 2px;
+}
+
+.navIcon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: currentColor;
+}
+
+.userBlock {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+  flex-shrink: 0;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: var(--color-bg-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-xs);
+  letter-spacing: var(--letter-spacing-xs);
+  color: var(--color-primitive-primary-on-inverse);
+  flex-shrink: 0;
+}
+
+.userName {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-m);
+  letter-spacing: var(--letter-spacing-m);
+  color: var(--color-primitive-primary);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+}
+
+.actionIcon {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-primitive-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionIcon:hover {
+  opacity: 0.7;
+}
+
+.actionIcon:focus-visible {
+  outline: 2px solid var(--color-primitive-brand);
+  outline-offset: 2px;
+}

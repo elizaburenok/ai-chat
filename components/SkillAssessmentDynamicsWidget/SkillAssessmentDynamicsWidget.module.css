@@ -1,0 +1,36 @@
+.widget :global(.widget__content) {
+  gap: var(--spacing-xs);
+}
+
+.graphWrap {
+  width: 100%;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1x);
+}
+
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-10x);
+  height: var(--spacing-10x);
+  padding: 0;
+  border: 1px solid var(--color-bg-neutral-2);
+  border-radius: var(--rounding-2x);
+  background-color: var(--color-container-default);
+  color: var(--color-primitive-primary);
+  cursor: pointer;
+}
+
+.navButton:hover:not(:disabled) {
+  background-color: var(--color-bg-neutral-1);
+}
+
+.navButton:disabled {
+  color: var(--color-primitive-neutral-4);
+  cursor: default;
+}

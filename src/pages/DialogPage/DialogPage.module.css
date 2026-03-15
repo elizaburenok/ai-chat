@@ -1,0 +1,118 @@
+/**
+ * DialogPage layout: Left sidebar | Chat area (center) | Right widgets
+ * Uses tokens only from tokens/css-variables.css
+ */
+
+.root {
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr) minmax(280px, 340px);
+  gap: 0;
+  min-height: 100vh;
+  background-color: var(--color-page-primary);
+}
+
+/* Left: Back + Title */
+.sidebarColumn {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-8x) var(--spacing-5x) var(--spacing-5x);
+  border-right: none;
+}
+
+.sidebarHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5x);
+  padding-bottom: var(--spacing-2-5x);
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--color-translucent-primitive-neutral-4);
+  border-radius: var(--rounding-2-5x);
+  background: transparent;
+  cursor: pointer;
+  color: var(--color-primitive-primary);
+  transition: background-color 0.15s ease;
+}
+
+.backButton:hover {
+  background-color: var(--color-state-container-transparent-1-active);
+}
+
+.backButton:focus-visible {
+  outline: 2px solid var(--color-primitive-brand);
+  outline-offset: 2px;
+}
+
+.sidebarTitle {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-demi-bold);
+  font-size: var(--font-size-2xl);
+  line-height: var(--line-height-2xl);
+  color: var(--color-primitive-primary);
+}
+
+/* Center: Chat area + input */
+.mainColumn {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--spacing-xl) var(--spacing-5x);
+}
+
+.dialogChat {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Right: Widgets */
+.widgetColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-s);
+  padding: var(--spacing-xl) var(--spacing-m);
+  border-left: none;
+}
+
+/* Cells in widget column: no horizontal padding (overrides Cell default) */
+.widgetColumn :global(.cell) {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.widget {
+  width: 100%;
+}
+
+.clientInfoWidget :global(.widget__content) {
+  gap: 0;
+}
+
+.finishSection {
+  display: flex;
+  align-items: flex-start;
+  margin-top: var(--spacing-xl); /* 30px gap below last widget */
+}
+
+@media (max-width: 1023px) {
+  .root {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebarColumn {
+    border-right: none;
+    border-bottom: 1px solid var(--color-primitive-neutral-2);
+  }
+
+  .widgetColumn {
+    border-left: none;
+    border-top: 1px solid var(--color-primitive-neutral-2);
+  }
+}

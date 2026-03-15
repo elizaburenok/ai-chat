@@ -1,0 +1,13 @@
+.user-info-widget .widget__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.user-info-widget .cell + .cell {
+  margin-top: var(--spacing-1x);
+}
+
+.user-info-widget .cell {
+  border-radius: var(--rounding-2-5x);
+}
