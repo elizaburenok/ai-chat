@@ -12,7 +12,7 @@ function viteBase(): string {
   if (fromEnv) return fromEnv.endsWith('/') ? fromEnv : `${fromEnv}/`;
   const repo = process.env.GITHUB_REPOSITORY?.split('/')[1];
   if (repo) return `/${repo}/`;
-  return '/ai-chat-simulator/';
+  return '/ai-chat/';
 }
 
 export default defineConfig({
