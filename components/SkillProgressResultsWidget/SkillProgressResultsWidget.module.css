@@ -1,0 +1,64 @@
+/**
+ * Skill progress block — Figma Results right column (827:137958)
+ * Page action sits below the card (827:138021), not in widget footer.
+ * Tokens from tokens/css-variables.css
+ */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4x);
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.widget :global(.widget__header) {
+  padding-bottom: 0;
+}
+
+.widget :global(.widget__content) {
+  padding: var(--spacing-4x) var(--spacing-m) var(--spacing-5x);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4x);
+}
+
+.topicCell {
+  width: 100%;
+}
+
+.graphWrap {
+  width: 100%;
+  height: var(--size-results-bar-graph-block);
+  min-height: var(--size-results-bar-graph-block);
+  box-sizing: border-box;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+}
+
+.barGraph {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+}
+
+/*
+ * Plot height is fixed (--size-results-bar-graph-block). VerticalMarker defaults to
+ * 150px — override so the bar track fills the grid and its baseline aligns with the
+ * bottom line («Поработать»).
+ */
+.barGraph :global(.vertical-marker) {
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.pageAction {
+  width: 100%;
+  box-sizing: border-box;
+}

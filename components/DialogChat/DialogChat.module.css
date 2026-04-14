@@ -10,17 +10,31 @@
   padding-top: var(--spacing-s);
   height: 100%;
   min-height: 0;
+  /* Keep scroll inside .feed; avoid page scroll + sticky input covering messages */
+  overflow: hidden;
 }
 
 /* ---- Feed (scrollable) ---- */
 .feed {
-  flex: 1;
+  box-sizing: border-box;
+  /* basis 0 so this region shrinks below content height and overflow-y can scroll */
+  flex: 1 1 0;
   min-height: 0;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: hidden;
   overflow-y: auto;
   width: 100%;
+  padding-bottom: var(--spacing-8x);
+  /* Hide scrollbar while keeping scroll (mouse, wheel, touch) */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.feed::-webkit-scrollbar {
+  display: none;
 }
 
 .feedInner {
@@ -28,7 +42,7 @@
   max-width: var(--chat-feed-max-width);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-m);
+  gap: var(--spacing-2-5x);
 }
 
 .onboardingPanel {
@@ -43,16 +57,19 @@
   opacity: 1;
 }
 
-.onboardingBubbleBase {
+.onboardingBubbleBase,
+.clientMessageBubbleBase {
   transform-origin: top left;
 }
 
-.onboardingBubblePreEnter {
+.onboardingBubblePreEnter,
+.clientMessagePreEnter {
   opacity: 0;
   transform: translateY(var(--spacing-1x));
 }
 
-.onboardingBubbleEnter {
+.onboardingBubbleEnter,
+.clientMessageEnter {
   opacity: 1;
   transform: translateY(0);
   transition:
@@ -91,10 +108,6 @@
   letter-spacing: var(--letter-spacing-m);
 }
 
-.firstClientMessage {
-  animation: first-client-message-enter 260ms ease both;
-}
-
 @keyframes onboarding-panel-enter {
   from {
     opacity: 0;
@@ -107,19 +120,7 @@
   }
 }
 
-@keyframes first-client-message-enter {
-  from {
-    opacity: 0;
-    transform: translateY(var(--spacing-2x));
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ---- Inbox (AI/Client) message - left aligned per Figma 349:17545 ---- */
+/* ---- Inbox (AI/Client) — Figma 707:20652: header strip + body in one card ---- */
 .inboxMessage {
   display: flex;
   flex-direction: column;
@@ -127,18 +128,56 @@
   width: fit-content;
   max-width: 100%;
   align-self: flex-start;
+  padding-right: var(--spacing-10x);
+}
+
+.inboxMessageCard {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: fit-content;
+  max-width: 100%;
   background-color: var(--color-container-transparent-1);
   border-radius: var(--rounding-2-5x);
-  padding: var(--spacing-2x) var(--spacing-2-5x);
-  gap: var(--spacing-1x);
+  overflow: hidden;
+}
+
+/* First ИИ-Тренажёр message (onboarding or intro): no card surface, no inner padding */
+.trainerFirstInboxCard {
+  background-color: transparent;
+}
+
+.trainerFirstInboxCard .inboxContent {
+  padding: 0;
+}
+
+/* Client messages: no surface or inner padding */
+.clientInboxCard {
+  background-color: transparent;
+  border-radius: 0;
+  overflow: visible;
+}
+
+.clientInboxCard .inboxHeader,
+.trainerFirstInboxCard .inboxHeader {
+  box-sizing: border-box;
+  height: calc(var(--spacing-8x) + var(--spacing-0-5x));
+  padding: 0;
+}
+
+.clientInboxCard .inboxContent {
+  padding: 0;
 }
 
 .inboxHeader {
   display: flex;
   gap: var(--spacing-xs);
   align-items: center;
-  padding: 0;
-  border-radius: 0;
+  padding: var(--spacing-1-25x) var(--spacing-2-5x) 0;
+}
+
+.inboxHeaderOnly {
+  padding-bottom: var(--spacing-1-25x);
 }
 
 .avatar {
@@ -147,6 +186,15 @@
   border-radius: 50%;
   background-color: var(--color-category-amethyst);
   flex-shrink: 0;
+}
+
+.avatarImage {
+  width: var(--spacing-6x);
+  height: var(--spacing-6x);
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background-color: var(--color-bg-brand-2);
 }
 
 .inboxTitle {
@@ -160,12 +208,13 @@
 }
 
 .inboxContent {
-  padding: 0;
-  padding-right: 0;
+  padding: var(--spacing-1-25x) var(--spacing-2-5x) var(--spacing-2x);
 }
 
 .inboxText {
   margin: 0;
+  padding-top: var(--spacing-1-25x);
+  padding-bottom: var(--spacing-1-25x);
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-m);
@@ -177,6 +226,37 @@
 .inboxSpacer {
   height: var(--spacing-m);
   width: 100%;
+}
+
+/* ---- Feed divider (707:20652) ---- */
+.feedDivider {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3x);
+  width: 100%;
+  box-sizing: border-box;
+  height: var(--spacing-xl);
+  padding: var(--spacing-1-5x) 0;
+}
+
+.feedDividerLine {
+  flex: 1;
+  min-width: 0;
+  height: 1px;
+  background-color: var(--color-translucent-primitive-neutral-2);
+}
+
+.feedDividerLabel {
+  flex-shrink: 0;
+  margin: 0;
+  padding-top: var(--spacing-1-25x);
+  padding-bottom: var(--spacing-1-25x);
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-neutral-4);
 }
 
 /* ---- User (Outbox) message - right aligned per Figma 349:17563 ---- */
@@ -198,6 +278,8 @@
 
 .userMessageText {
   margin: 0;
+  padding-top: var(--spacing-1-25x);
+  padding-bottom: var(--spacing-1-25x);
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-m);
@@ -236,10 +318,10 @@
 
 /* ---- Message container (input area) ---- */
 .messageContainer {
+  position: relative;
   flex-shrink: 0;
-  position: sticky;
-  bottom: 0;
   z-index: 2;
+  margin-bottom: var(--spacing-5x);
   padding-bottom: var(--spacing-m);
   width: 100%;
   background-color: var(--color-page-primary);
@@ -286,25 +368,19 @@
   outline-offset: 2px;
 }
 
+/* Figma 504:25601 — popup primary, border, rounding-6x, Surfaces/Card shadow */
 .inputWrapper {
-  background-color: var(--color-container-transparent-1);
-  border-radius: var(--rounding-3x);
+  box-sizing: border-box;
+  min-height: calc(var(--spacing-8x) + var(--spacing-8x) + var(--size-avatar-m));
+  background-color: var(--color-popup-primary);
+  border: 1px solid var(--color-translucent-primitive-neutral-2);
+  border-radius: var(--rounding-6x);
   padding: 0 var(--spacing-5x);
   overflow: hidden;
+  box-shadow: var(--shadow-card);
   transform-origin: center bottom;
   animation: input-wrapper-enter 760ms cubic-bezier(0.22, 1, 0.36, 1) both;
   will-change: transform, opacity;
-}
-
-.inputLabel {
-  margin: 0;
-  padding-top: var(--spacing-3x);
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-s);
-  line-height: var(--line-height-s);
-  letter-spacing: var(--letter-spacing-s);
-  color: var(--color-primitive-primary);
 }
 
 @keyframes input-wrapper-enter {
@@ -327,6 +403,8 @@
 @media (prefers-reduced-motion: reduce) {
   .onboardingBubblePreEnter,
   .onboardingBubbleEnter,
+  .clientMessagePreEnter,
+  .clientMessageEnter,
   .onboardingActions,
   .onboardingActionsEnter {
     transition: none;
@@ -335,6 +413,8 @@
 
   .onboardingBubblePreEnter,
   .onboardingBubbleEnter,
+  .clientMessagePreEnter,
+  .clientMessageEnter,
   .onboardingActions,
   .onboardingActionsEnter {
     opacity: 1;

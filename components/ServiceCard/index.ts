@@ -1,2 +1,2 @@
-export * from './ServiceCard';
-export { ServiceCard as default } from './ServiceCard';
+export { ServiceCard } from './ServiceCard';
+export type { ServiceCardProps } from './ServiceCard';

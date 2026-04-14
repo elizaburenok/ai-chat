@@ -1,0 +1,77 @@
+/**
+ * Service card — Figma 🛠️ Service Card (node 132:7513)
+ * Uses tokens only.
+ */
+
+.root {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 330px;
+  max-width: 100%;
+  padding: var(--spacing-m);
+  margin: 0;
+  border: none;
+  text-align: left;
+  background-color: var(--color-container-default);
+  border-radius: var(--rounding-2-5x);
+  box-shadow: var(--shadow-card);
+  cursor: default;
+  font: inherit;
+  color: inherit;
+}
+
+.rootInteractive {
+  cursor: pointer;
+  transition: box-shadow 0.15s ease;
+}
+
+.rootInteractive:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.rootInteractive:focus-visible {
+  outline: 2px solid var(--color-primitive-brand);
+  outline-offset: 2px;
+}
+
+.iconWrap {
+  display: flex;
+  align-items: flex-start;
+  padding-bottom: var(--spacing-xl);
+}
+
+.icon {
+  display: block;
+  width: var(--size-avatar-m);
+  height: var(--size-avatar-m);
+  flex-shrink: 0;
+  border-radius: var(--rounding-2-5x);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2-5x);
+  width: 100%;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-xl);
+  color: var(--color-primitive-primary);
+}
+
+.description {
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-s);
+  letter-spacing: var(--letter-spacing-s);
+  color: var(--color-primitive-secondary);
+}

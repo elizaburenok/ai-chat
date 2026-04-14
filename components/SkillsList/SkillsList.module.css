@@ -10,37 +10,6 @@
   min-width: 0;
 }
 
-/* Header "Все темы" - TTN 600/2XL per Figma */
-.sectionHeader {
-  margin: 0;
-  padding: var(--spacing-s) var(--spacing-m);
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-demi-bold);
-  font-size: var(--font-size-2xl);
-  line-height: var(--line-height-2xl);
-  color: var(--color-primitive-primary);
-}
-
-/* Chip Carousel - horizontal scroll */
-.chipCarouselWrapper {
-  overflow: hidden;
-  padding: 0 var(--spacing-m);
-}
-
-.chipCarousel {
-  display: flex;
-  gap: var(--spacing-xs);
-  overflow-x: auto;
-  overflow-y: hidden;
-  padding-bottom: var(--spacing-s);
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.chipCarousel::-webkit-scrollbar {
-  display: none;
-}
-
 /* Skill groups */
 .groups {
   display: flex;
@@ -52,10 +21,10 @@
   flex-direction: column;
 }
 
-/* Theme section title - TTN 500/S: 14px, secondary color, padding 15px 20px */
+/* Theme section title - TTN 500/S: 14px, secondary color, vertical padding only */
 .groupTitle {
   margin: 0;
-  padding: var(--spacing-s) var(--spacing-m);
+  padding: var(--spacing-s) 0;
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-s);
@@ -90,6 +59,11 @@
 .skillLink:focus-visible {
   outline: 2px solid var(--color-primitive-brand);
   outline-offset: 2px;
+}
+
+/* Align with layout: no horizontal inset on list rows (Cell default is 20px sides) */
+.skillLink :global(.cell) {
+  padding: var(--spacing-s) 0;
 }
 
 /* 44x44 avatar icon for skill row */

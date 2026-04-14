@@ -10,7 +10,7 @@
   max-width: 340px;
   border-radius: var(--rounding-4-5x);
   background-color: var(--color-container-default);
-  border: 1px solid var(--color-bg-neutral-2);
+  border: 1px solid var(--color-primitive-neutral-2);
   overflow: hidden;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -21,7 +21,8 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--rounding-3x);
-  padding: var(--rounding-4-5x) var(--spacing-m) var(--spacing-xs);
+  /* Figma 707:20663 — Widget Title: pt 20, pb 10, px 20 */
+  padding: var(--spacing-5x) var(--spacing-m) var(--spacing-xs);
   border-bottom: none;
 }
 

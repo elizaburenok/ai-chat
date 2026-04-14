@@ -1,0 +1,40 @@
+/**
+ * Average result card — Figma Results right column (827:137958)
+ * Tokens from tokens/css-variables.css
+ */
+
+.widget :global(.widget__content) {
+  padding: var(--spacing-4x) var(--spacing-m) var(--spacing-5x) var(--spacing-8x);
+}
+
+.cellRow {
+  width: 100%;
+}
+
+/* Override Cell size-M vertical padding for this widget row */
+.cellRow:global(.cell--size-M) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.cellRow :global(.cell__content-wrapper) {
+  padding-left: var(--spacing-3x);
+}
+
+.avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-avatar-m);
+  height: var(--size-avatar-m);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatarImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

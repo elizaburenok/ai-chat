@@ -15,7 +15,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-s);
+  gap: var(--spacing-8x);
 }
 
 .item {
@@ -26,8 +26,7 @@
 .trigger {
   display: flex;
   width: 100%;
-  padding: var(--spacing-xs) var(--spacing-m);
-  padding-right: var(--spacing-m);
+  padding: 0 var(--spacing-m);
   border: none;
   border-radius: var(--rounding-2-5x);
   background: transparent;
@@ -76,6 +75,7 @@
 }
 
 .triggerSubtitle {
+  padding-right: calc(var(--spacing-m) + var(--spacing-2x));
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-s);

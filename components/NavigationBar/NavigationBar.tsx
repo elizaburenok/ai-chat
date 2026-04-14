@@ -21,6 +21,8 @@ export interface NavigationBarProps {
   // Back Button Props
   /** Back button click handler */
   onBackClick?: () => void;
+  /** Accessible name for the back control (defaults to “Go back”) */
+  backButtonAriaLabel?: string;
   
   // Text Block Props
   /** Show root link in text block */
@@ -62,6 +64,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = (props: NavigationBar
     hasTextBlock = false,
     hasItems = false,
     onBackClick,
+    backButtonAriaLabel = 'Go back',
     hasRootLink = false,
     rootLinkText,
     onRootLinkClick,
@@ -83,7 +86,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = (props: NavigationBar
             type="button"
             className="navigation-bar__back-button"
             onClick={onBackClick}
-            aria-label="Go back"
+            aria-label={backButtonAriaLabel}
           >
             <svg
               width="24"

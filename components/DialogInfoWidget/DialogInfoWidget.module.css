@@ -1,5 +1,20 @@
+/* Figma 723:101162 — title + «Тема» cell; spacing aligns with element-list gap / bottom padding */
+.widget :global(.widget__header) {
+  padding-bottom: 0;
+}
+
 .widget :global(.widget__content) {
-  padding-bottom: var(--spacing-2x);
+  padding: var(--spacing-4x) var(--spacing-m) var(--spacing-5x);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4x);
+}
+
+.topicCell {
+  width: 100%;
 }
 
 .timerValue {
@@ -20,8 +35,8 @@
 }
 
 .pauseButton {
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: var(--spacing-s);
+  padding-right: var(--spacing-s);
   background-color: var(--color-bg-brand-1);
 }
 

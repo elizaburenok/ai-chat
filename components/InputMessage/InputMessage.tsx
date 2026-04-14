@@ -9,16 +9,18 @@ export interface InputMessageProps {
   defaultValue?: string;
   /** Placeholder when empty */
   placeholder?: string;
-  /** Send button disabled (e.g. validation, loading) */
+  /** When true, sending via Enter is blocked (e.g. validation, loading) */
   sendDisabled?: boolean;
   /** Input and actions disabled */
   disabled?: boolean;
   /** Callback when value changes */
   onValueChange?: (value: string) => void;
-  /** Callback when send is clicked */
+  /** Called when the user sends the message (Enter without Shift) */
   onSend?: (value: string) => void;
   /** Additional class name */
   className?: string;
+  /** Accessible name for the editor */
+  ariaLabel?: string;
   /** HTML data attribute */
   'data-testid'?: string;
 }
@@ -33,6 +35,7 @@ export const InputMessage: React.FC<InputMessageProps> = (props) => {
     onValueChange,
     onSend,
     className,
+    ariaLabel = 'Сообщение',
     'data-testid': dataTestId,
   } = props;
 
@@ -106,7 +109,7 @@ export const InputMessage: React.FC<InputMessageProps> = (props) => {
   }, [updateFromEditor]);
 
   const applyCommand = useCallback(
-    (command: 'bold' | 'italic' | 'insertUnorderedList' | 'insertOrderedList') => {
+    (command: 'bold' | 'underline' | 'insertUnorderedList') => {
       if (disabled) return;
       const editor = editorRef.current;
       if (!editor) return;
@@ -119,17 +122,25 @@ export const InputMessage: React.FC<InputMessageProps> = (props) => {
   );
 
   const handleBoldClick = useCallback(() => applyCommand('bold'), [applyCommand]);
-  const handleItalicClick = useCallback(() => applyCommand('italic'), [applyCommand]);
+  const handleUnderlineClick = useCallback(() => applyCommand('underline'), [applyCommand]);
   const handleBulletClick = useCallback(
     () => applyCommand('insertUnorderedList'),
     [applyCommand]
   );
-  const handleNumberedClick = useCallback(
-    () => applyCommand('insertOrderedList'),
-    [applyCommand]
-  );
 
-  const showSend = hasText;
+  const handleLinkClick = useCallback(() => {
+    if (disabled) return;
+    const editor = editorRef.current;
+    if (!editor) return;
+    editor.focus();
+    const url = window.prompt('Введите URL');
+    if (!url?.trim()) {
+      updateFromEditor();
+      return;
+    }
+    document.execCommand('createLink', false, url.trim());
+    updateFromEditor();
+  }, [disabled, updateFromEditor]);
 
   const rootClassName = cn(
     styles.root,
@@ -140,33 +151,17 @@ export const InputMessage: React.FC<InputMessageProps> = (props) => {
   return (
     <div className={rootClassName} data-testid={dataTestId}>
       <div className={styles.inner}>
-        <div className={styles.editorRow}>
-          <div
-            ref={editorRef}
-            className={styles.field}
-            contentEditable={!disabled}
-            data-placeholder={placeholder}
-            onInput={handleInput}
-            onKeyDown={handleKeyDown}
-            onPaste={handlePaste}
-            aria-label="Сообщение"
-            suppressContentEditableWarning
-          />
-
-          <div className={styles.suffix}>
-            {showSend && (
-              <button
-                type="button"
-                className={styles.send}
-                onClick={handleSend}
-                disabled={!canSend}
-                aria-label="Отправить"
-              >
-                <SendIcon />
-              </button>
-            )}
-          </div>
-        </div>
+        <div
+          ref={editorRef}
+          className={styles.field}
+          contentEditable={!disabled}
+          data-placeholder={placeholder}
+          onInput={handleInput}
+          onKeyDown={handleKeyDown}
+          onPaste={handlePaste}
+          aria-label={ariaLabel}
+          suppressContentEditableWarning
+        />
 
         <div className={styles.divider} aria-hidden />
         <div className={styles.toolbar} aria-hidden={disabled}>
@@ -178,17 +173,17 @@ export const InputMessage: React.FC<InputMessageProps> = (props) => {
             disabled={disabled}
             aria-label="Полужирный"
           >
-            B
+            <ToolbarIconBold />
           </button>
           <button
             type="button"
             className={styles.toolbarButton}
-            onClick={handleItalicClick}
+            onClick={handleUnderlineClick}
             onMouseDown={(e) => e.preventDefault()}
             disabled={disabled}
-            aria-label="Курсив"
+            aria-label="Подчёркивание"
           >
-            I
+            <ToolbarIconUnderline />
           </button>
           <button
             type="button"
@@ -198,17 +193,17 @@ export const InputMessage: React.FC<InputMessageProps> = (props) => {
             disabled={disabled}
             aria-label="Маркированный список"
           >
-            •
+            <ToolbarIconList />
           </button>
           <button
             type="button"
             className={styles.toolbarButton}
-            onClick={handleNumberedClick}
+            onClick={handleLinkClick}
             onMouseDown={(e) => e.preventDefault()}
             disabled={disabled}
-            aria-label="Нумерованный список"
+            aria-label="Ссылка"
           >
-            1.
+            <ToolbarIconLink />
           </button>
         </div>
       </div>
@@ -216,10 +211,46 @@ export const InputMessage: React.FC<InputMessageProps> = (props) => {
   );
 };
 
-function SendIcon() {
+function ToolbarIconBold() {
   return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M10 16V4M4 10l6-6 6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className={styles.toolbarIcon} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+      <path
+        d="M5 4.5h5.5a3.5 3.5 0 0 1 0 7H5V4.5zm0 7h6a3.5 3.5 0 0 1 0 7H5v-7z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ToolbarIconUnderline() {
+  return (
+    <svg className={styles.toolbarIcon} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+      <path d="M5 4v6a5 5 0 0 0 10 0V4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M4 17h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function ToolbarIconList() {
+  return (
+    <svg className={styles.toolbarIcon} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+      <path d="M7 5h10M7 10h10M7 15h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+      <path d="M4 5h.01M4 10h.01M4 15h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function ToolbarIconLink() {
+  return (
+    <svg className={styles.toolbarIcon} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+      <path
+        d="M8.5 11.5A3 3 0 0 1 6 7.5a3 3 0 0 1 4.24-4.24l1.06 1.06M11.5 8.5A3 3 0 0 1 14 12.5a3 3 0 0 1-4.24 4.24l-1.06-1.06"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }

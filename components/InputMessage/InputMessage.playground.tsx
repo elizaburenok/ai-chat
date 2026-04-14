@@ -12,7 +12,7 @@ export function InputMessagePlayground(): React.ReactElement {
     <div style={{ padding: '24px', maxWidth: '640px', margin: '0 auto', fontFamily: 'sans-serif' }}>
       <h1 style={{ marginBottom: '8px', fontSize: '20px', fontWeight: 600 }}>InputMessage — Playground</h1>
       <p style={{ color: '#676767', marginBottom: '24px', fontSize: '14px' }}>
-        Variants: empty / has text, send active / disabled.
+        Send with Enter (Shift+Enter for newline). Variants: empty / has text / send disabled / disabled.
       </p>
 
       <section style={{ marginBottom: '32px' }}>
@@ -24,7 +24,7 @@ export function InputMessagePlayground(): React.ReactElement {
 
       <section style={{ marginBottom: '32px' }}>
         <h2 style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 600, color: '#191919' }}>
-          2. With text, send active
+          2. With text (Enter to send)
         </h2>
         <InputMessage defaultValue="Text M" onSend={setLastSent} />
       </section>

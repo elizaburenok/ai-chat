@@ -1,7 +1,7 @@
 /**
  * HomePage layout per Figma (node 344:25088)
  * Top: MainNavBar
- * Body: Left sidebar (280px) | Center (720px) | Right widget (340px)
+ * Body: Left sidebar (280px) | Center (flex) | Right widget (300px)
  * Uses tokens only.
  */
 
@@ -14,7 +14,7 @@
 
 .body {
   display: grid;
-  grid-template-columns: 280px minmax(0, 1fr) 340px;
+  grid-template-columns: 280px minmax(0, 1fr) var(--layout-home-history-widget-width);
   gap: var(--spacing-5x);
   flex: 1;
   padding: var(--spacing-5x);
@@ -34,16 +34,46 @@
   line-height: var(--line-height-2xl);
 }
 
-/* Center: Search + skills grid */
+/* Center: Search + chips + skills list */
 .centerColumn {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-6x);
+  gap: 0;
   min-width: 0;
+}
+
+.searchBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-m);
+  width: 100%;
 }
 
 .searchWrapper {
   width: 100%;
+}
+
+/* Theme filter chips — horizontal scroll, below search */
+.chipCarouselWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  height: fit-content;
+  overflow: hidden;
+  padding: 0;
+}
+
+.chipCarousel {
+  display: flex;
+  gap: var(--spacing-xs);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: var(--spacing-s);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.chipCarousel::-webkit-scrollbar {
+  display: none;
 }
 
 .skillsGrid {
@@ -57,11 +87,15 @@
 .rightColumn {
   display: flex;
   flex-direction: column;
-  width: 340px;
+  width: var(--layout-home-history-widget-width);
 }
 
-.widget {
-  width: 100%;
+/* Override components/Widget/Widget.css (340px max) for this page */
+.rightColumn :global(.widget) {
+  width: var(--layout-home-history-widget-width);
+  max-width: var(--layout-home-history-widget-width);
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .widget :global(.widget__footer) {
@@ -145,7 +179,7 @@
 
   .rightColumn {
     grid-column: 1 / -1;
-    max-width: 340px;
+    max-width: var(--layout-home-history-widget-width);
     margin-left: 0;
   }
 }

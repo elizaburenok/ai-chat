@@ -65,6 +65,7 @@
   --color-state-bg-default-fixed-active: rgba(255, 255, 255, 0.9); /* #ffffffe5 */
   
   /* Colors - Translucent */
+  --color-translucent-primitive-neutral-2: rgba(25, 25, 25, 0.2);
   --color-translucent-primitive-neutral-4: rgba(25, 25, 25, 0.45); /* #19191973 */
   
   /* Colors - Background */
@@ -144,6 +145,7 @@
   --spacing-4x: 16px;
   --spacing-5x: 20px;
   --spacing-6x: 24px;
+  --spacing-7x: 28px;
   --spacing-8x: 32px;
   --spacing-10x: 40px;
   --spacing-12x: 48px;
@@ -158,10 +160,15 @@
   --spacing-7xl: 80px;
 
   /* Layout */
+  /** Home page — «Последние диалоги» widget column */
+  --layout-home-history-widget-width: 300px;
   --content-max-width: 640px;
-  --chat-feed-max-width: 670px;
+  /* Dialog feed / composer inner width (Figma 707:20652 — 680px composer) */
+  --chat-feed-max-width: 680px;
   --size-avatar-m: 44px;
-  
+  /** Results page skill widget — Bar graph block (Figma 827:137958) */
+  --size-results-bar-graph-block: 104px;
+
   /* Rounding */
   --rounding-base: 4px;
   --rounding-1x: 4px;

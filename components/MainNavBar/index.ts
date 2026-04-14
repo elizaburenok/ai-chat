@@ -1,1 +1,1 @@
-export { MainNavBar, type MainNavBarProps } from './MainNavBar';
+export { MainNavBar, type MainNavBarProps, type MainNavBarType } from './MainNavBar';

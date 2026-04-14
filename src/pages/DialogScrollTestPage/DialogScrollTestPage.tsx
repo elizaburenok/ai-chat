@@ -47,7 +47,7 @@ export function DialogScrollTestPage() {
       <header className={styles.header}>
         <h1 className={styles.title}>Тест длинного диалога</h1>
         <p className={styles.subtitle}>Сценарий для проверки кнопки "Прокрутить к последнему сообщению"</p>
-        <Link className={styles.backLink} to="/">
+        <Link className={styles.backLink} to="/home">
           Вернуться на главную
         </Link>
       </header>

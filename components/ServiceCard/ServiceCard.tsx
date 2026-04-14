@@ -1,99 +1,61 @@
 import React from 'react';
-import { cn } from '@/lib/utils';
-import './ServiceCard.css';
+import styles from './ServiceCard.module.css';
 
 export interface ServiceCardProps {
-  /** Card title */
   title: string;
-  /** Card subtitle/description */
-  subtitle: string;
-  /** Icon displayed in colored background (ignored when avatarSrc is set) */
-  icon?: React.ReactNode;
-  /** Avatar image source – renders 44×44 image instead of icon */
-  avatarSrc?: string;
-  /** Background color for icon container (CSS color value) */
-  iconBgColor?: string;
-  /** Link href - renders as anchor when provided */
-  href?: string;
-  /** Click handler - used when href is not provided */
+  description: string;
+  /** Imported SVG URL from @avatar-icons/services/Services/ (44×44 asset) */
+  iconSrc: string;
+  /** Figma layer name on the avatar node, e.g. Services/Skills */
+  figmaLayerName?: string;
   onClick?: () => void;
-  /** Additional CSS class name */
   className?: string;
-  /** HTML data attributes */
-  'data-testid'?: string;
 }
 
-function getServiceCardClassNames(props: ServiceCardProps): string {
-  return cn(
-    'service-card',
-    props.href && 'service-card--link',
-    props.className
-  );
-}
-
-export const ServiceCard: React.FC<ServiceCardProps> = (props: ServiceCardProps) => {
-  const {
-    title,
-    subtitle,
-    icon,
-    avatarSrc,
-    iconBgColor,
-    href,
-    onClick,
-    className,
-    'data-testid': dataTestId,
-  } = props;
-
-  const classNames = getServiceCardClassNames(props);
-
-  const iconStyle = !avatarSrc && iconBgColor ? { backgroundColor: iconBgColor } : undefined;
-
-  const iconContent = avatarSrc ? (
-    <img
-      src={avatarSrc}
-      alt=""
-      width={44}
-      height={44}
-      className="service-card__avatar"
-    />
-  ) : (
-    icon
-  );
+export const ServiceCard: React.FC<ServiceCardProps> = ({
+  title,
+  description,
+  iconSrc,
+  figmaLayerName,
+  onClick,
+  className,
+}) => {
+  const interactive = Boolean(onClick);
+  const rootClass = [
+    styles.root,
+    interactive ? styles.rootInteractive : '',
+    className || '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   const content = (
     <>
-      <div className="service-card__icon-wrapper" style={iconStyle}>
-        {iconContent}
+      <div className={styles.iconWrap}>
+        <img
+          src={iconSrc}
+          alt=""
+          width={44}
+          height={44}
+          className={styles.icon}
+          data-figma-layer={figmaLayerName}
+          aria-hidden
+        />
       </div>
-      <div className="service-card__content">
-        <h3 className="service-card__title">{title}</h3>
-        <p className="service-card__subtitle">{subtitle}</p>
+      <div className={styles.text}>
+        <p className={styles.title}>{title}</p>
+        <p className={styles.description}>{description}</p>
       </div>
     </>
   );
 
-  if (href) {
+  if (interactive) {
     return (
-      <a
-        href={href}
-        className={classNames}
-        data-testid={dataTestId}
-      >
+      <button type="button" className={rootClass} onClick={onClick}>
         {content}
-      </a>
+      </button>
     );
   }
 
-  return (
-    <button
-      type="button"
-      className={classNames}
-      onClick={onClick}
-      data-testid={dataTestId}
-    >
-      {content}
-    </button>
-  );
+  return <div className={rootClass}>{content}</div>;
 };
-
-export default ServiceCard;

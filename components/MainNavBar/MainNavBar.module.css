@@ -1,15 +1,17 @@
 /**
- * MainNavBar - top horizontal bar per Figma (node 344:25089)
+ * MainNavBar — Figma node 723:101143 (🛠️ Main Navigation Bar), 1440×74
  * Logo | Nav buttons | User block
  * Uses tokens only.
  */
 
 .root {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   width: 100%;
+  height: 74px;
   min-height: 74px;
-  padding: var(--spacing-5x) var(--spacing-m);
+  padding: 0 var(--spacing-m);
   background-color: var(--color-page-primary);
   border-bottom: 1px solid var(--color-bg-neutral-2);
   /* Figma Borders/Bottom Line: inner shadow */
@@ -38,6 +40,7 @@
 }
 
 .navButton {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--spacing-xs);
@@ -56,6 +59,10 @@
 }
 
 .navButton:hover {
+  background-color: var(--color-container-transparent-1);
+}
+
+.navButton[aria-current='page'] {
   background-color: var(--color-container-transparent-1);
 }
 
@@ -88,7 +95,8 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background-color: var(--color-bg-brand);
+  /* Figma user chip / category accent (coral), not brand purple */
+  background-color: var(--color-category-coral);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,4 +144,24 @@
 .actionIcon:focus-visible {
   outline: 2px solid var(--color-primitive-brand);
   outline-offset: 2px;
+}
+
+.actionIconSvg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* Optional active-state dot (Figma prop isIndicator) */
+.rootIndicator .navButton[aria-current='page']::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: var(--spacing-1x);
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-primitive-brand);
 }

@@ -1,7 +1,7 @@
 /**
- * ResultsPage layout per Figma (node 348:15240)
+ * ResultsPage layout per Figma (827:137958)
  * Top: MainNavBar
- * Body: Left sidebar (280px) | Center content (720px) | Right widgets (340px)
+ * Body: Left NavigationBar | Center (max 720px, 1fr track) | Right widgets (340px, gutter --spacing-m)
  * Tokens only from tokens/css-variables.css
  */
 
@@ -14,65 +14,52 @@
 
 .body {
   display: grid;
-  grid-template-columns: 280px minmax(0, 720px) 340px;
+  grid-template-columns: 280px minmax(0, 1fr) 340px;
   gap: var(--spacing-7xl);
   flex: 1;
-  padding: var(--spacing-xl) 0 var(--spacing-5x);
+  box-sizing: border-box;
+  padding: var(--spacing-8x) 0 var(--spacing-8x) 0;
+  padding-right: var(--spacing-m);
 }
 
-/* Left: Back button */
+/* Left: Navigation bar (back) */
 .leftColumn {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-5x);
   width: 280px;
   padding: 0 var(--spacing-m) var(--spacing-2-5x);
 }
 
-.backButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border: 1px solid var(--color-translucent-primitive-neutral-4);
-  border-radius: var(--rounding-2-5x);
-  background: transparent;
-  cursor: pointer;
-  color: var(--color-primitive-primary);
-  transition: background-color 0.2s ease;
+.leftColumn :global(.navigation-bar__button-section) {
+  padding: 0 var(--spacing-m) var(--spacing-2-5x);
 }
 
-.backButton:hover {
-  background-color: var(--color-state-container-transparent-1-active);
+.leftColumn :global(.navigation-bar__text-block) {
+  padding: 0 var(--spacing-m) var(--spacing-4x);
 }
 
-.backButton:focus-visible {
-  outline: 2px solid var(--color-primitive-brand);
-  outline-offset: 2px;
-}
-
-/* Center: Page content */
+/* Center: Page content (max 720px; track grows with 1fr so aside stays right) */
 .centerColumn {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-8x);
   min-width: 0;
+  max-width: 720px;
+  width: 100%;
+  justify-self: start;
   padding-bottom: var(--spacing-5xl);
 }
 
-/* Page header: title + repeat button */
+/* Page header: title, then repeat */
 .header {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-2-5x);
 }
 
 .pageTitle {
   margin: 0;
-  padding-top: var(--spacing-xl);
-  padding-bottom: var(--spacing-xl);
+  padding: 0 0 var(--spacing-xl) 0;
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-demi-bold);
   font-size: var(--font-size-5xl);
@@ -114,20 +101,33 @@
   outline-offset: 2px;
 }
 
-/* Summary block (Main Grade View) */
+/* Summary block (Main Grade View — Cell M per Figma) */
 .summary {
   display: flex;
   flex-direction: column;
-  padding: var(--spacing-xs) var(--spacing-m) var(--spacing-m);
+  padding: var(--spacing-5x) var(--spacing-7x) var(--spacing-5x);
   border-radius: var(--rounding-4-5x);
-  background-color: var(--color-container-transparent-1);
+  background-color: var(--color-bg-neutral-1);
 }
 
-.summaryRow {
-  display: flex;
-  align-items: center;
-  padding: var(--spacing-xs) 0;
-  gap: var(--rounding-3x);
+.summaryCell {
+  width: 100%;
+  align-items: flex-start;
+  padding-top: var(--spacing-xs);
+  padding-bottom: 0;
+}
+
+.summaryCell :global(.cell) {
+  gap: var(--spacing-3x);
+}
+
+.summaryCell :global(.cell--size-M.cell--variant-default.cell--align-left) {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.summaryCell :global(.cell__content-wrapper) {
+  padding-left: var(--spacing-3x);
 }
 
 .summaryAvatar {
@@ -138,52 +138,20 @@
   width: var(--size-avatar-m);
   height: var(--size-avatar-m);
   border-radius: 50%;
-  background-color: var(--color-bg-success-1);
-  color: var(--color-primitive-success);
+  overflow: hidden;
 }
 
-.summaryContent {
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-0-5x);
-}
-
-.summaryTitle {
-  margin: 0;
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-medium);
-  font-size: var(--font-size-m);
-  line-height: var(--line-height-m);
-  letter-spacing: var(--letter-spacing-m);
-  color: var(--color-primitive-primary);
-}
-
-.summarySubtitle {
-  margin: 0;
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-regular);
-  font-size: var(--font-size-s);
-  line-height: var(--line-height-s);
-  letter-spacing: var(--letter-spacing-s);
-  color: var(--color-primitive-secondary);
-}
-
-.summaryScore {
-  flex-shrink: 0;
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-regular);
-  font-size: var(--font-size-m);
-  line-height: var(--line-height-m);
-  letter-spacing: var(--letter-spacing-m);
-  color: var(--color-primitive-secondary);
-  text-align: right;
+.summaryAvatarImg {
+  width: var(--size-avatar-m);
+  height: var(--size-avatar-m);
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
 }
 
 .summaryText {
   margin: 0;
-  padding-left: calc(var(--spacing-m) + var(--rounding-3x) + var(--spacing-6-25x));
+  padding-left: var(--spacing-12x);
   padding-top: var(--spacing-xs);
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-regular);
@@ -197,15 +165,19 @@
 .mainContent {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-8x);
 }
 
-/* Right: Widgets */
+/* Right: Widgets — flush to page gutter (padding-right on .body) */
 .rightColumn {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-s);
   width: 340px;
+  min-width: 0;
+  padding: 0;
+  box-sizing: border-box;
+  justify-self: end;
 }
 
 .widget {
@@ -220,6 +192,8 @@
   .rightColumn {
     grid-column: 1 / -1;
     max-width: 100%;
+    padding: 0;
+    justify-self: stretch;
   }
 }
 

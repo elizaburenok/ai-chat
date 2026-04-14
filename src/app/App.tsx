@@ -1,10 +1,13 @@
 import { AppRoutes } from '@/routes';
+import { TrainingSessionProvider } from '@/session';
 import styles from './App.module.css';
 
 export function App() {
   return (
     <div className={styles.root}>
-      <AppRoutes />
+      <TrainingSessionProvider>
+        <AppRoutes />
+      </TrainingSessionProvider>
     </div>
   );
 }
